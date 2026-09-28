@@ -1,0 +1,1182 @@
+[
+  {
+    "id": "overnight-oats",
+    "name": "Berry Overnight Oats",
+    "meal_types": [
+      "breakfast"
+    ],
+    "tags": [
+      "vegetarian",
+      "make-ahead",
+      "high-fiber"
+    ],
+    "prep_minutes": 5,
+    "servings": 1,
+    "nutrition_per_serving": {
+      "calories": 380,
+      "protein_g": 16,
+      "carbs_g": 58,
+      "fat_g": 9
+    },
+    "ingredients": [
+      {
+        "item": "rolled oats",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "greek yogurt",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "milk",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "mixed berries",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "chia seeds",
+        "qty": 1,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Combine oats, yogurt, milk and chia in a jar.",
+      "Top with berries, refrigerate overnight."
+    ]
+  },
+  {
+    "id": "veggie-scramble",
+    "name": "Spinach & Feta Egg Scramble",
+    "meal_types": [
+      "breakfast"
+    ],
+    "tags": [
+      "vegetarian",
+      "gluten-free",
+      "low-carb",
+      "high-protein"
+    ],
+    "prep_minutes": 10,
+    "servings": 1,
+    "nutrition_per_serving": {
+      "calories": 340,
+      "protein_g": 24,
+      "carbs_g": 6,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "eggs",
+        "qty": 3,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "spinach",
+        "qty": 1,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "feta",
+        "qty": 1,
+        "unit": "oz",
+        "section": "dairy"
+      },
+      {
+        "item": "olive oil",
+        "qty": 1,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Wilt spinach in oil.",
+      "Add beaten eggs, stir gently until set.",
+      "Fold in feta."
+    ]
+  },
+  {
+    "id": "pb-banana-toast",
+    "name": "Peanut Butter Banana Toast",
+    "meal_types": [
+      "breakfast",
+      "snack"
+    ],
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "quick"
+    ],
+    "prep_minutes": 5,
+    "servings": 1,
+    "nutrition_per_serving": {
+      "calories": 390,
+      "protein_g": 13,
+      "carbs_g": 52,
+      "fat_g": 17
+    },
+    "ingredients": [
+      {
+        "item": "whole grain bread",
+        "qty": 2,
+        "unit": "slice",
+        "section": "bakery"
+      },
+      {
+        "item": "peanut butter",
+        "qty": 2,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "banana",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Toast bread.",
+      "Spread peanut butter, top with sliced banana."
+    ]
+  },
+  {
+    "id": "tofu-breakfast-burrito",
+    "name": "Tofu Breakfast Burrito",
+    "meal_types": [
+      "breakfast"
+    ],
+    "tags": [
+      "vegan",
+      "vegetarian",
+      "high-protein",
+      "dairy-free"
+    ],
+    "prep_minutes": 15,
+    "servings": 2,
+    "nutrition_per_serving": {
+      "calories": 420,
+      "protein_g": 22,
+      "carbs_g": 45,
+      "fat_g": 17
+    },
+    "ingredients": [
+      {
+        "item": "firm tofu",
+        "qty": 7,
+        "unit": "oz",
+        "section": "produce"
+      },
+      {
+        "item": "flour tortillas",
+        "qty": 2,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "black beans",
+        "qty": 0.5,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "salsa",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Crumble and brown tofu with diced pepper.",
+      "Warm beans.",
+      "Fill tortillas with tofu, beans, salsa; roll."
+    ]
+  },
+  {
+    "id": "chicken-quinoa-bowl",
+    "name": "Lemon Chicken Quinoa Bowl",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "high-protein",
+      "make-ahead",
+      "dairy-free"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 42,
+      "carbs_g": 44,
+      "fat_g": 18
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "quinoa",
+        "qty": 1,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "cucumber",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cherry tomatoes",
+        "qty": 1,
+        "unit": "pint",
+        "section": "produce"
+      },
+      {
+        "item": "lemon",
+        "qty": 2,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 3,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook quinoa.",
+      "Season and grill chicken with lemon and oil.",
+      "Chop veg, assemble bowls."
+    ]
+  },
+  {
+    "id": "chickpea-salad-wrap",
+    "name": "Smashed Chickpea Salad Wrap",
+    "meal_types": [
+      "lunch"
+    ],
+    "tags": [
+      "vegan",
+      "vegetarian",
+      "quick",
+      "dairy-free",
+      "high-fiber"
+    ],
+    "prep_minutes": 10,
+    "servings": 2,
+    "nutrition_per_serving": {
+      "calories": 430,
+      "protein_g": 15,
+      "carbs_g": 58,
+      "fat_g": 15
+    },
+    "ingredients": [
+      {
+        "item": "chickpeas",
+        "qty": 1,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "vegan mayo",
+        "qty": 2,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "celery",
+        "qty": 2,
+        "unit": "stalk",
+        "section": "produce"
+      },
+      {
+        "item": "flour tortillas",
+        "qty": 2,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "lettuce",
+        "qty": 2,
+        "unit": "leaf",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Mash chickpeas with mayo and diced celery.",
+      "Season, wrap with lettuce in tortillas."
+    ]
+  },
+  {
+    "id": "turkey-avocado-sandwich",
+    "name": "Turkey Avocado Sandwich",
+    "meal_types": [
+      "lunch"
+    ],
+    "tags": [
+      "quick",
+      "high-protein",
+      "dairy-free"
+    ],
+    "prep_minutes": 5,
+    "servings": 1,
+    "nutrition_per_serving": {
+      "calories": 460,
+      "protein_g": 30,
+      "carbs_g": 38,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "whole grain bread",
+        "qty": 2,
+        "unit": "slice",
+        "section": "bakery"
+      },
+      {
+        "item": "sliced turkey",
+        "qty": 4,
+        "unit": "oz",
+        "section": "meat"
+      },
+      {
+        "item": "avocado",
+        "qty": 0.5,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "tomato",
+        "qty": 0.5,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Layer turkey, sliced avocado and tomato on bread."
+    ]
+  },
+  {
+    "id": "lentil-soup",
+    "name": "Red Lentil Soup",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "vegan",
+      "vegetarian",
+      "gluten-free",
+      "dairy-free",
+      "make-ahead",
+      "budget",
+      "high-fiber"
+    ],
+    "prep_minutes": 35,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 330,
+      "protein_g": 18,
+      "carbs_g": 50,
+      "fat_g": 6
+    },
+    "ingredients": [
+      {
+        "item": "red lentils",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 2,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "canned tomatoes",
+        "qty": 1,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "vegetable broth",
+        "qty": 4,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "cumin",
+        "qty": 2,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Saute onion and carrot.",
+      "Add lentils, tomatoes, broth, cumin.",
+      "Simmer 25 min, blend partially."
+    ]
+  },
+  {
+    "id": "salmon-sheet-pan",
+    "name": "Sheet-Pan Salmon & Broccoli",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "high-protein",
+      "dairy-free",
+      "low-carb",
+      "pescatarian"
+    ],
+    "prep_minutes": 25,
+    "servings": 2,
+    "nutrition_per_serving": {
+      "calories": 490,
+      "protein_g": 38,
+      "carbs_g": 14,
+      "fat_g": 31
+    },
+    "ingredients": [
+      {
+        "item": "salmon fillets",
+        "qty": 2,
+        "unit": "whole",
+        "section": "seafood"
+      },
+      {
+        "item": "broccoli",
+        "qty": 1,
+        "unit": "head",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "lemon",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 2,
+        "unit": "clove",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Toss broccoli with oil and garlic.",
+      "Add salmon, roast at 425F for 15 min.",
+      "Finish with lemon."
+    ]
+  },
+  {
+    "id": "beef-stir-fry",
+    "name": "Beef & Veggie Stir-Fry",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "high-protein",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 20,
+    "servings": 3,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 35,
+      "carbs_g": 55,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "flank steak",
+        "qty": 1,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 2,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "snap peas",
+        "qty": 2,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Cook rice.",
+      "Sear sliced steak, remove.",
+      "Stir-fry veg with garlic, return beef, add soy sauce."
+    ]
+  },
+  {
+    "id": "black-bean-tacos",
+    "name": "Black Bean & Sweet Potato Tacos",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "budget",
+      "high-fiber"
+    ],
+    "prep_minutes": 30,
+    "servings": 3,
+    "nutrition_per_serving": {
+      "calories": 450,
+      "protein_g": 14,
+      "carbs_g": 72,
+      "fat_g": 12
+    },
+    "ingredients": [
+      {
+        "item": "sweet potato",
+        "qty": 2,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "black beans",
+        "qty": 1,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "corn tortillas",
+        "qty": 9,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "avocado",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "lime",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "chili powder",
+        "qty": 2,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Roast cubed sweet potato with chili powder.",
+      "Warm beans.",
+      "Fill tortillas, top with avocado and lime."
+    ]
+  },
+  {
+    "id": "pasta-primavera",
+    "name": "Pasta Primavera",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "budget"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 510,
+      "protein_g": 17,
+      "carbs_g": 78,
+      "fat_g": 14
+    },
+    "ingredients": [
+      {
+        "item": "penne",
+        "qty": 1,
+        "unit": "lb",
+        "section": "pantry"
+      },
+      {
+        "item": "zucchini",
+        "qty": 2,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cherry tomatoes",
+        "qty": 1,
+        "unit": "pint",
+        "section": "produce"
+      },
+      {
+        "item": "parmesan",
+        "qty": 2,
+        "unit": "oz",
+        "section": "dairy"
+      },
+      {
+        "item": "olive oil",
+        "qty": 3,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 3,
+        "unit": "clove",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Boil pasta.",
+      "Saute garlic, zucchini, tomatoes.",
+      "Toss with pasta and parmesan."
+    ]
+  },
+  {
+    "id": "chicken-curry",
+    "name": "Coconut Chicken Curry",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "dairy-free",
+      "high-protein",
+      "make-ahead"
+    ],
+    "prep_minutes": 40,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 580,
+      "protein_g": 36,
+      "carbs_g": 48,
+      "fat_g": 26
+    },
+    "ingredients": [
+      {
+        "item": "chicken thighs",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "coconut milk",
+        "qty": 1,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "curry paste",
+        "qty": 3,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "spinach",
+        "qty": 3,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown chicken and onion.",
+      "Add curry paste and coconut milk, simmer 20 min.",
+      "Stir in spinach; serve over rice."
+    ]
+  },
+  {
+    "id": "shrimp-zoodles",
+    "name": "Garlic Shrimp Zucchini Noodles",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "low-carb",
+      "high-protein",
+      "quick",
+      "pescatarian"
+    ],
+    "prep_minutes": 15,
+    "servings": 2,
+    "nutrition_per_serving": {
+      "calories": 310,
+      "protein_g": 32,
+      "carbs_g": 12,
+      "fat_g": 15
+    },
+    "ingredients": [
+      {
+        "item": "shrimp",
+        "qty": 0.75,
+        "unit": "lb",
+        "section": "seafood"
+      },
+      {
+        "item": "zucchini",
+        "qty": 3,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 4,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "butter",
+        "qty": 1,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "lemon",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Spiralize zucchini.",
+      "Saute shrimp in butter and garlic.",
+      "Toss with zoodles 2 min, add lemon."
+    ]
+  },
+  {
+    "id": "hummus-veggies",
+    "name": "Hummus & Veggie Sticks",
+    "meal_types": [
+      "snack"
+    ],
+    "tags": [
+      "vegan",
+      "vegetarian",
+      "gluten-free",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 5,
+    "servings": 1,
+    "nutrition_per_serving": {
+      "calories": 180,
+      "protein_g": 6,
+      "carbs_g": 18,
+      "fat_g": 10
+    },
+    "ingredients": [
+      {
+        "item": "hummus",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "deli"
+      },
+      {
+        "item": "carrot",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cucumber",
+        "qty": 0.5,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Cut veg into sticks, serve with hummus."
+    ]
+  },
+  {
+    "id": "apple-almonds",
+    "name": "Apple & Almonds",
+    "meal_types": [
+      "snack"
+    ],
+    "tags": [
+      "vegan",
+      "vegetarian",
+      "gluten-free",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 1,
+    "servings": 1,
+    "nutrition_per_serving": {
+      "calories": 260,
+      "protein_g": 7,
+      "carbs_g": 29,
+      "fat_g": 15
+    },
+    "ingredients": [
+      {
+        "item": "apple",
+        "qty": 1,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "almonds",
+        "qty": 1,
+        "unit": "oz",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Slice apple, serve with almonds."
+    ]
+  },
+  {
+    "id": "cottage-cheese-bowl",
+    "name": "Cottage Cheese & Pineapple Bowl",
+    "meal_types": [
+      "snack",
+      "breakfast"
+    ],
+    "tags": [
+      "vegetarian",
+      "gluten-free",
+      "high-protein",
+      "quick"
+    ],
+    "prep_minutes": 2,
+    "servings": 1,
+    "nutrition_per_serving": {
+      "calories": 210,
+      "protein_g": 24,
+      "carbs_g": 20,
+      "fat_g": 3
+    },
+    "ingredients": [
+      {
+        "item": "cottage cheese",
+        "qty": 1,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "pineapple chunks",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Top cottage cheese with pineapple."
+    ]
+  },
+  {
+    "id": "sheet-pan-chicken-potatoes-green-beans",
+    "name": "Sheet-Pan Chicken, Potatoes & Green Beans",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "dairy-free",
+      "high-protein",
+      "budget",
+      "make-ahead"
+    ],
+    "prep_minutes": 40,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 40,
+      "carbs_g": 42,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "chicken thighs",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "baby potatoes",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "green beans",
+        "qty": 12.0,
+        "unit": "oz",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 3.0,
+        "unit": "each",
+        "section": "produce"
+      },
+      {
+        "item": "lemon",
+        "qty": 1.0,
+        "unit": "each",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "paprika",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Heat oven to 425F.",
+      "Halve potatoes and cut carrots into coins; toss with 2 tbsp olive oil, salt, pepper and spread on a sheet pan. Roast 15 min.",
+      "Toss chicken thighs with remaining oil, minced garlic, paprika, salt and pepper.",
+      "Push veggies aside, add chicken to the pan, roast 20 min.",
+      "Add green beans for the last 10 min, until chicken reads 175F and beans are tender.",
+      "Squeeze lemon over everything and serve."
+    ]
+  },
+  {
+    "id": "khao-piak-sen-lao-chicken-noodle-soup",
+    "name": "Khao Piak Sen (Lao Chicken Noodle Soup)",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "dairy-free",
+      "high-protein",
+      "make-ahead"
+    ],
+    "prep_minutes": 180,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 640,
+      "protein_g": 42,
+      "carbs_g": 72,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "vegetable oil",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic cloves (for frying), thinly sliced",
+        "qty": 24.0,
+        "unit": "cloves",
+        "section": "produce"
+      },
+      {
+        "item": "shallots, thinly sliced",
+        "qty": 3.0,
+        "unit": "medium",
+        "section": "produce"
+      },
+      {
+        "item": "yellow onion, quartered",
+        "qty": 1.0,
+        "unit": "medium",
+        "section": "produce"
+      },
+      {
+        "item": "ginger, peeled and sliced",
+        "qty": 3.0,
+        "unit": "oz",
+        "section": "produce"
+      },
+      {
+        "item": "lemongrass stalk, roughly chopped",
+        "qty": 1.0,
+        "unit": "stalk",
+        "section": "produce"
+      },
+      {
+        "item": "garlic cloves (for broth), thinly sliced",
+        "qty": 6.0,
+        "unit": "cloves",
+        "section": "produce"
+      },
+      {
+        "item": "makrut lime leaves",
+        "qty": 5.0,
+        "unit": "leaves",
+        "section": "produce"
+      },
+      {
+        "item": "cilantro",
+        "qty": 1.0,
+        "unit": "bunch",
+        "section": "produce"
+      },
+      {
+        "item": "whole chicken",
+        "qty": 3.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "kosher salt",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "Asian fish sauce",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "sugar",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "white rice flour",
+        "qty": 220.0,
+        "unit": "g",
+        "section": "pantry"
+      },
+      {
+        "item": "tapioca flour",
+        "qty": 220.0,
+        "unit": "g",
+        "section": "pantry"
+      },
+      {
+        "item": "scallions",
+        "qty": 2.0,
+        "unit": "stalks",
+        "section": "produce"
+      },
+      {
+        "item": "bird's eye chiles, minced",
+        "qty": 2.0,
+        "unit": "chiles",
+        "section": "produce"
+      },
+      {
+        "item": "morning glory sprigs (optional)",
+        "qty": 5.0,
+        "unit": "sprigs",
+        "section": "produce"
+      },
+      {
+        "item": "lime",
+        "qty": 1.0,
+        "unit": "each",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Fry the sliced garlic in the oil over medium-low until pale gold, drain; repeat with shallots. Reserve both and the infused oil.",
+      "Char/soften the onion, ginger, lemongrass, sliced garlic, lime leaves and cilantro stems in 3 tbsp of the reserved oil in a large pot.",
+      "Add the whole chicken and water to cover, season with salt, soy sauce, fish sauce and sugar. Simmer gently until the chicken is cooked through, then pull the chicken out, let it cool, and shred the meat.",
+      "Keep simmering the broth with the bones for depth; strain out the aromatics and taste for salt.",
+      "Make the noodle dough: whisk 200 g each rice flour and tapioca flour, stir in the boiling water, then knead until smooth and elastic. Rest briefly.",
+      "Roll the dough out on a surface dusted with the remaining 20 g each rice and tapioca flour; cut into thick noodles and toss in the extra flour.",
+      "Boil the noodles directly in the simmering broth until chewy and the broth thickens slightly from the starch.",
+      "Serve the noodles and broth in bowls topped with shredded chicken, scallions, cilantro, fried garlic and shallots, morning glory, with chiles and lime wedges on the side."
+    ],
+    "source_url": "https://www.seriouseats.com/khao-piak-sen-lao-chicken-noodle-soup"
+  }
+]

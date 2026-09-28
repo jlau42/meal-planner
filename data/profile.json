@@ -1,0 +1,24 @@
+{
+  "household_size": 4,
+  "diet": [
+    "dairy-free"
+  ],
+  "allergies": [
+    "dairy",
+    "milk",
+    "butter",
+    "cheese",
+    "cream",
+    "yogurt",
+    "parmesan",
+    "ghee",
+    "whey",
+    "lactose"
+  ],
+  "dislikes": [],
+  "daily_calorie_target": null,
+  "daily_protein_target_g": null,
+  "max_weeknight_minutes": null,
+  "pantry_staples": [],
+  "notes": "2 adults + 2 kids. Jon has a dairy allergy - hard exclusion. Search filters use broad substrings (milk, cream, etc.), which also screen out coconut milk/coconut cream: those are dairy-free and fine - approve them manually. Check labels on curry pastes, broths and seasoning blends. Likes chicken-and-veggie dinners; keep kid-friendly (mild spice)."
+}

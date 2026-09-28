@@ -1,0 +1,10 @@
+[project]
+name = "meal-planner"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=1.9.0",
+    "pypdfium2>=5.13.0",
+    "reportlab>=5.0.1",
+]
