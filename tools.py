@@ -1,40 +1,175 @@
 """Tools the meal-planning agent can call.
 
 Claude decides *what* to eat; these functions own the facts and the math
-(recipe data, nutrition totals, shopping-list aggregation) so the numbers in a
-saved plan come from code, not from the model's arithmetic.
+(recipe data, allergy checks, nutrition totals, shopping-list aggregation) so the
+numbers and safety checks in a saved plan come from code, not the model.
+
+Data layout:
+  data/recipes.json          shared recipe library
+  data/profiles/<user>.json  one profile per user: household members (each with their
+                             own allergies, diet, targets), favorites, removed recipes
+  plans/<user>/              that user's saved plans
+
+The active user is context-local (a ContextVar), so a multi-user front end such as a
+Discord bot can serve several people at once: set_active_user() in each request's
+context, then run the agent there (asyncio.to_thread copies the context along).
 """
 
+import functools
 import json
 import math
 import re
+import threading
 from collections import defaultdict
+from contextvars import ContextVar
 from datetime import date
 from pathlib import Path
-from typing import List, Optional, TypedDict
+from typing import List, NotRequired, Optional, TypedDict
 
 from anthropic import beta_tool
 
 ROOT = Path(__file__).parent
 RECIPES_PATH = ROOT / "data" / "recipes.json"
-PROFILE_PATH = ROOT / "data" / "profile.json"
-REMOVED_PATH = ROOT / "data" / "removed_recipes.json"
+PROFILES_DIR = ROOT / "data" / "profiles"
+LAST_USER_PATH = PROFILES_DIR / ".last_user"
 PLANS_DIR = ROOT / "plans"
 PREFERRED_SOURCE = "seriouseats.com"
 
 DEFAULT_PROFILE = {
-    "household_size": 3,
-    "diet": [],
-    "allergies": [],
-    "dislikes": [],
-    "daily_calorie_target": None,
-    "daily_protein_target_g": None,
+    "household_size": 1,
+    "members": [],
     "max_weeknight_minutes": None,
     "pantry_staples": [],
     "notes": "",
     "favorite_recipe_ids": [],
+    "removed_recipes": [],
+    "discord_user_ids": [],
 }
 
+DEFAULT_MEMBER = {
+    "name": "",
+    "allergies": [],
+    "allergy_exceptions": [],
+    "diet": [],
+    "dislikes": [],
+    "daily_calorie_target": None,
+    "daily_protein_target_g": None,
+    "notes": "",
+}
+
+_active_user: ContextVar[Optional[str]] = ContextVar("active_user", default=None)
+# Serializes read-modify-write of profiles and the recipe library across threads.
+_write_lock = threading.RLock()
+
+
+def _locked(fn):
+    @functools.wraps(fn)
+    def wrapper(*args, **kwargs):
+        with _write_lock:
+            return fn(*args, **kwargs)
+    return wrapper
+
+
+# ---------------------------------------------------------------------------
+# Users (called by main.py, not by the agent)
+# ---------------------------------------------------------------------------
+
+def slugify(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def list_users() -> List[str]:
+    return sorted(p.stem for p in PROFILES_DIR.glob("*.json"))
+
+
+def last_user() -> Optional[str]:
+    if LAST_USER_PATH.exists():
+        name = LAST_USER_PATH.read_text(encoding="utf-8").strip()
+        if name in list_users():
+            return name
+    return None
+
+
+@_locked
+def set_active_user(name: str, remember: bool = True) -> tuple[str, bool]:
+    """Make `name` the active user in the current context, creating an empty profile if
+    needed. remember=True records it as the CLI's default. Returns (user id, created)."""
+    user = slugify(name)
+    if not user:
+        raise ValueError("Profile names need at least one letter or digit.")
+    PROFILES_DIR.mkdir(parents=True, exist_ok=True)
+    created = not _profile_path(user).exists()
+    if created:
+        _profile_path(user).write_text(json.dumps(DEFAULT_PROFILE, indent=2), encoding="utf-8")
+    _active_user.set(user)
+    if remember:
+        LAST_USER_PATH.write_text(user, encoding="utf-8")
+    return user, created
+
+
+def active_user() -> str:
+    user = _active_user.get()
+    if user is None:
+        raise RuntimeError("No active profile. Call set_active_user() first.")
+    return user
+
+
+def _read_profile_file(user: str) -> dict:
+    return {**DEFAULT_PROFILE, **json.loads(_profile_path(user).read_text(encoding="utf-8"))}
+
+
+def user_for_discord(discord_user_id: int | str) -> Optional[str]:
+    """The profile linked to a Discord user id, or None if they haven't linked one."""
+    did = str(discord_user_id)
+    return next((u for u in list_users() if did in _read_profile_file(u)["discord_user_ids"]), None)
+
+
+@_locked
+def link_discord(user: str, discord_user_id: int | str) -> None:
+    """Link a Discord user to a profile (moving the link if it pointed elsewhere).
+    Several Discord users may share one profile, e.g. two adults in a household."""
+    did = str(discord_user_id)
+    if slugify(user) not in list_users():
+        raise ValueError(f"No profile named {user!r}.")
+    for u in list_users():
+        profile = _read_profile_file(u)
+        ids = [i for i in profile["discord_user_ids"] if i != did]
+        if u == slugify(user):
+            ids.append(did)
+        if ids != profile["discord_user_ids"]:
+            profile["discord_user_ids"] = ids
+            _profile_path(u).write_text(json.dumps(profile, indent=2), encoding="utf-8")
+
+
+@_locked
+def unlink_discord(discord_user_id: int | str) -> Optional[str]:
+    """Remove a Discord user's link. Returns the profile it was linked to, if any."""
+    did = str(discord_user_id)
+    user = user_for_discord(did)
+    if user:
+        profile = _read_profile_file(user)
+        profile["discord_user_ids"] = [i for i in profile["discord_user_ids"] if i != did]
+        _profile_path(user).write_text(json.dumps(profile, indent=2), encoding="utf-8")
+    return user
+
+
+def _profile_path(user: Optional[str] = None) -> Path:
+    return PROFILES_DIR / f"{user or active_user()}.json"
+
+
+def _load_profile() -> dict:
+    profile = _read_profile_file(active_user())
+    profile["members"] = [{**DEFAULT_MEMBER, **m} for m in profile["members"]]
+    return profile
+
+
+def _save_profile(profile: dict) -> None:
+    _profile_path().write_text(json.dumps(profile, indent=2), encoding="utf-8")
+
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
 
 def _load_recipes() -> list:
     return json.loads(RECIPES_PATH.read_text(encoding="utf-8"))
@@ -44,14 +179,59 @@ def _save_recipes(recipes: list) -> None:
     RECIPES_PATH.write_text(json.dumps(recipes, indent=2), encoding="utf-8")
 
 
-def _load_profile() -> dict:
-    if PROFILE_PATH.exists():
-        return {**DEFAULT_PROFILE, **json.loads(PROFILE_PATH.read_text(encoding="utf-8"))}
-    return dict(DEFAULT_PROFILE)
+def _is_preferred(r: dict) -> bool:
+    return PREFERRED_SOURCE in (r.get("source_url") or "")
 
 
-def _summary(r: dict, favorites: set) -> dict:
-    return {
+def _household_size(profile: dict) -> int:
+    return max(1, profile["household_size"], len(profile["members"]))
+
+
+def _find_member(profile: dict, name: str) -> Optional[dict]:
+    return next((m for m in profile["members"] if m["name"].lower() == name.strip().lower()), None)
+
+
+def _resolve_members(profile: dict, names: Optional[List[str]]) -> List[dict]:
+    """Members for `names`, or every member when names is None. Unknown names raise."""
+    if names is None:
+        return profile["members"]
+    members, unknown = [], []
+    for n in names:
+        m = _find_member(profile, n)
+        (members.append(m) if m else unknown.append(n))
+    if unknown:
+        known = ", ".join(m["name"] for m in profile["members"]) or "none yet"
+        raise ValueError(f"Unknown household member(s): {unknown}. Members: {known}.")
+    return members
+
+
+def _allergy_conflicts(recipe: dict, member: dict) -> List[str]:
+    """Ingredients in `recipe` that match one of the member's allergens.
+
+    Matching is by case-insensitive substring, so "milk" also catches "buttermilk".
+    allergy_exceptions whitelists specific safe ingredients ("coconut milk")."""
+    allergens = [a.lower() for a in member["allergies"]]
+    exceptions = [e.lower() for e in member["allergy_exceptions"]]
+    hits = []
+    for ing in recipe["ingredients"]:
+        item = ing["item"].lower()
+        if any(e in item for e in exceptions):
+            continue
+        if any(a in item for a in allergens):
+            hits.append(ing["item"])
+    return hits
+
+
+def _soft_issues(recipe: dict, member: dict) -> List[str]:
+    """Non-safety mismatches: diet tags the recipe lacks, disliked ingredients."""
+    issues = [f"not tagged {d}" for d in member["diet"] if d.lower() not in recipe["tags"]]
+    ingredients = " | ".join(i["item"].lower() for i in recipe["ingredients"])
+    issues += [f"contains disliked {d}" for d in member["dislikes"] if d.lower() in ingredients]
+    return issues
+
+
+def _summary(r: dict, favorites: set, members: List[dict]) -> dict:
+    summary = {
         "favorite": r["id"] in favorites,
         "id": r["id"],
         "name": r["name"],
@@ -63,52 +243,119 @@ def _summary(r: dict, favorites: set) -> dict:
         "ingredients": [i["item"] for i in r["ingredients"]],
         "source_url": r.get("source_url"),
     }
+    issues = {m["name"]: i for m in members if (i := _soft_issues(r, m))}
+    if issues:
+        summary["member_issues"] = issues
+    return summary
 
 
-def _is_preferred(r: dict) -> bool:
-    return PREFERRED_SOURCE in (r.get("source_url") or "")
-
+# ---------------------------------------------------------------------------
+# Profile and household members
+# ---------------------------------------------------------------------------
 
 @beta_tool
 def get_profile() -> str:
-    """Get the user's saved food profile: household size, diet, allergies,
-    dislikes, calorie/protein targets, cooking-time limits, pantry staples and notes.
+    """Get the active user's profile: household size, each household member's allergies,
+    allergy exceptions, diet, dislikes and calorie/protein targets, plus cooking-time
+    limit, pantry staples, notes, favorites and removed recipes.
     Call this at the start of every planning session."""
-    return json.dumps(_load_profile(), indent=2)
+    profile = _load_profile()
+    profile.pop("discord_user_ids", None)  # account plumbing, not food preferences
+    return json.dumps({"user": active_user(), **profile,
+                       "household_size": _household_size(profile)}, indent=2)
 
 
 @beta_tool
+@_locked
 def update_profile(
     household_size: Optional[int] = None,
-    diet: Optional[List[str]] = None,
-    allergies: Optional[List[str]] = None,
-    dislikes: Optional[List[str]] = None,
-    daily_calorie_target: Optional[int] = None,
-    daily_protein_target_g: Optional[int] = None,
     max_weeknight_minutes: Optional[int] = None,
     pantry_staples: Optional[List[str]] = None,
     notes: Optional[str] = None,
 ) -> str:
-    """Save changes to the user's food profile. Only the fields you pass are
-    changed; list fields replace the existing list, so include existing entries you want to keep.
+    """Save household-wide settings for the active user. Per-person details (allergies,
+    diet, targets) belong to household members: use set_member for those. Only the fields
+    you pass are changed; list fields replace the existing list.
 
     Args:
-        household_size: Number of people eating each meal.
-        diet: Diet labels matching recipe tags, e.g. ["vegetarian"], ["pescatarian", "gluten-free"].
-        allergies: Ingredients that must never appear, e.g. ["peanut", "shrimp"].
-        dislikes: Ingredients to avoid when possible.
-        daily_calorie_target: Target calories per person per day.
-        daily_protein_target_g: Target protein grams per person per day.
+        household_size: Total people eating, including members without a saved profile
+            (e.g. a guest). Never less than the number of saved members.
         max_weeknight_minutes: Longest prep time acceptable on Mon-Thu dinners.
-        pantry_staples: Items the user always has, left off shopping lists (e.g. "olive oil", "cumin").
-        notes: Free-form preferences (cuisines, budget, batch-cooking habits).
+        pantry_staples: Items always on hand, left off shopping lists (e.g. "olive oil").
+        notes: Free-form household preferences (cuisines, budget, batch-cooking habits).
     """
     profile = _load_profile()
-    updates = {k: v for k, v in locals().items() if k != "profile" and v is not None}
-    profile.update(updates)
-    PROFILE_PATH.write_text(json.dumps(profile, indent=2), encoding="utf-8")
-    return "Profile updated:\n" + json.dumps(profile, indent=2)
+    for key, value in (("household_size", household_size), ("max_weeknight_minutes", max_weeknight_minutes),
+                       ("pantry_staples", pantry_staples), ("notes", notes)):
+        if value is not None:
+            profile[key] = value
+    _save_profile(profile)
+    return "Profile updated:\n" + get_profile.call({})
 
+
+@beta_tool
+@_locked
+def set_member(
+    name: str,
+    allergies: Optional[List[str]] = None,
+    allergy_exceptions: Optional[List[str]] = None,
+    diet: Optional[List[str]] = None,
+    dislikes: Optional[List[str]] = None,
+    daily_calorie_target: Optional[int] = None,
+    daily_protein_target_g: Optional[int] = None,
+    notes: Optional[str] = None,
+) -> str:
+    """Add a household member or update one (matched by name, case-insensitive). Only
+    the fields you pass are changed; list fields replace the existing list.
+
+    Args:
+        name: The person's name, e.g. "Jon" or "Ava".
+        allergies: Hard exclusions, matched as substrings of ingredient names. Be broad:
+            for a dairy allergy use ["dairy", "milk", "butter", "cheese", "cream", "yogurt", ...].
+        allergy_exceptions: Ingredients that match an allergy term but are safe, e.g.
+            ["coconut milk", "coconut cream", "peanut-free butter"].
+        diet: Diet labels matching recipe tags, e.g. ["vegetarian"], ["gluten-free"].
+        dislikes: Ingredients this person avoids when possible.
+        daily_calorie_target: This person's daily calorie target.
+        daily_protein_target_g: This person's daily protein target in grams.
+        notes: Free-form notes, e.g. "age 6, mild spice only".
+    """
+    profile = _load_profile()
+    member = _find_member(profile, name)
+    created = member is None
+    if created:
+        member = {**DEFAULT_MEMBER, "name": name.strip()}
+        profile["members"].append(member)
+    for key, value in (("allergies", allergies), ("allergy_exceptions", allergy_exceptions),
+                       ("diet", diet), ("dislikes", dislikes),
+                       ("daily_calorie_target", daily_calorie_target),
+                       ("daily_protein_target_g", daily_protein_target_g), ("notes", notes)):
+        if value is not None:
+            member[key] = value
+    _save_profile(profile)
+    return f"{'Added' if created else 'Updated'} member {member['name']}:\n" + json.dumps(member, indent=2)
+
+
+@beta_tool
+@_locked
+def remove_member(name: str) -> str:
+    """Remove a household member from the active user's profile.
+
+    Args:
+        name: The member's name.
+    """
+    profile = _load_profile()
+    member = _find_member(profile, name)
+    if member is None:
+        _resolve_members(profile, [name])  # raises with the list of known members
+    profile["members"] = [m for m in profile["members"] if m is not member]
+    _save_profile(profile)
+    return f"Removed member {member['name']}. Household size is now {_household_size(profile)}."
+
+
+# ---------------------------------------------------------------------------
+# Recipes
+# ---------------------------------------------------------------------------
 
 @beta_tool
 def search_recipes(
@@ -118,26 +365,34 @@ def search_recipes(
     max_prep_minutes: Optional[int] = None,
     text: Optional[str] = None,
     favorites_only: bool = False,
+    safe_for: Optional[List[str]] = None,
 ) -> str:
-    """Search the saved recipe library. All filters are optional and combined with AND.
-    Returns summaries including favorite status, nutrition per serving, ingredient names
-    and source_url. The user's favorites are listed first, then Serious Eats recipes.
+    """Search the shared recipe library. All filters are optional and combined with AND.
+
+    Recipes containing an allergen of any member in safe_for (default: every household
+    member) are excluded automatically. Recipes the active user removed are hidden.
+    Results list favorites first, then Serious Eats recipes, and include member_issues:
+    diet tags a recipe lacks or disliked ingredients, per member (not safety problems).
 
     Args:
         meal_type: One of "breakfast", "lunch", "dinner", "snack".
         required_tags: Recipe must have all of these tags, e.g. ["vegan", "quick"].
             Known tags include vegetarian, vegan, pescatarian, gluten-free, dairy-free,
             low-carb, high-protein, high-fiber, quick, make-ahead, budget.
-        exclude_ingredients: Drop recipes containing any ingredient whose name includes one of these
-            substrings (case-insensitive). Use for allergies and dislikes.
+        exclude_ingredients: Also drop recipes containing any of these substrings.
         max_prep_minutes: Maximum prep time.
         text: Substring to match against the recipe name or ingredients.
-        favorites_only: Only return the user's favorite recipes.
+        favorites_only: Only return the active user's favorite recipes.
+        safe_for: Member names who will eat this meal, when it's not the whole household
+            (e.g. ["Ava", "Leo"] for a kids' lunch).
     """
-    favorites = set(_load_profile()["favorite_recipe_ids"])
-    results = []
+    profile = _load_profile()
+    favorites = set(profile["favorite_recipe_ids"])
+    removed = {e["id"] for e in profile["removed_recipes"]}
+    eaters = _resolve_members(profile, safe_for)
+    results, hidden_unsafe = [], 0
     for r in _load_recipes():
-        if favorites_only and r["id"] not in favorites:
+        if r["id"] in removed or (favorites_only and r["id"] not in favorites):
             continue
         ingredients = " | ".join(i["item"].lower() for i in r["ingredients"])
         if meal_type and meal_type.lower() not in r["meal_types"]:
@@ -150,17 +405,37 @@ def search_recipes(
             continue
         if text and text.lower() not in (r["name"].lower() + " " + ingredients):
             continue
+        if any(_allergy_conflicts(r, m) for m in eaters):
+            hidden_unsafe += 1
+            continue
         results.append(r)
+    note = (f" ({hidden_unsafe} more hidden for allergies of: "
+            f"{', '.join(m['name'] for m in eaters)})") if hidden_unsafe else ""
     if not results:
-        return ("No saved recipes matched. Loosen the filters, or suggest a Serious Eats dish "
-                "the user could paste in.")
+        return ("No saved recipes matched" + note + ". Loosen the filters, or suggest a "
+                "Serious Eats dish the user could paste in.")
     results.sort(key=lambda r: (r["id"] not in favorites, not _is_preferred(r)))
-    return json.dumps([_summary(r, favorites) for r in results], indent=2)
+    body = json.dumps([_summary(r, favorites, eaters) for r in results], indent=2)
+    return body + (f"\n\nNote:{note}" if note else "")
 
 
 @beta_tool
+def get_recipe(recipe_id: str) -> str:
+    """Get the full recipe (quantities and steps) for one recipe id.
+
+    Args:
+        recipe_id: The recipe id from search_recipes.
+    """
+    for r in _load_recipes():
+        if r["id"] == recipe_id:
+            return json.dumps(r, indent=2)
+    raise ValueError(f"Unknown recipe id {recipe_id!r}")
+
+
+@beta_tool
+@_locked
 def set_favorite(recipe_id: str, favorite: bool = True) -> str:
-    """Mark a recipe as one of the user's favorites, or remove it from favorites.
+    """Mark a recipe as one of the active user's favorites, or remove it from favorites.
     Favorites are listed first in search_recipes and should be scheduled often.
 
     Args:
@@ -175,96 +450,65 @@ def set_favorite(recipe_id: str, favorite: bool = True) -> str:
     if favorite:
         ids.append(recipe_id)
     profile["favorite_recipe_ids"] = ids
-    PROFILE_PATH.write_text(json.dumps(profile, indent=2), encoding="utf-8")
+    _save_profile(profile)
     current = ", ".join(names.get(i, i) for i in ids) or "none"
     action = "Added to" if favorite else "Removed from"
     return f"{action} favorites: {names[recipe_id]}. Current favorites: {current}."
 
 
-def _load_removed() -> list:
-    if REMOVED_PATH.exists():
-        return json.loads(REMOVED_PATH.read_text(encoding="utf-8"))
-    return []
-
-
-def _find_removed(recipe_id: str, source_url: Optional[str] = None) -> Optional[dict]:
-    for entry in _load_removed():
-        r = entry["recipe"]
-        if r["id"] == recipe_id or (source_url and r.get("source_url") == source_url):
-            return entry
-    return None
-
-
 @beta_tool
+@_locked
 def remove_recipe(recipe_id: str, reason: Optional[str] = None) -> str:
-    """Remove a recipe the user doesn't like from the library. It also comes off their
-    favorites, and add_recipe will refuse to re-add it. The recipe is kept in
-    data/removed_recipes.json so restore_recipe can bring it back.
+    """Remove a recipe the active user doesn't like. It's hidden from their searches and
+    plans and taken off their favorites; the shared library and other users are unaffected.
+    add_recipe refuses to re-add it, and restore_recipe brings it back.
 
     Args:
         recipe_id: The recipe id from search_recipes.
-        reason: Why the user didn't like it, in their words (e.g. "too spicy for the kids").
+        reason: Why they didn't like it, in their words (e.g. "too spicy for the kids").
             Use it to steer future suggestions away from similar recipes.
     """
-    recipes = _load_recipes()
-    recipe = next((r for r in recipes if r["id"] == recipe_id), None)
+    recipe = next((r for r in _load_recipes() if r["id"] == recipe_id), None)
     if recipe is None:
         raise ValueError(f"Unknown recipe id {recipe_id!r}. Use search_recipes to find the id.")
-
-    removed = _load_removed()
-    removed.append({"recipe": recipe, "reason": reason, "removed_on": date.today().isoformat()})
-    REMOVED_PATH.write_text(json.dumps(removed, indent=2), encoding="utf-8")
-    _save_recipes([r for r in recipes if r["id"] != recipe_id])
-
     profile = _load_profile()
-    if recipe_id in profile["favorite_recipe_ids"]:
-        profile["favorite_recipe_ids"] = [i for i in profile["favorite_recipe_ids"] if i != recipe_id]
-        PROFILE_PATH.write_text(json.dumps(profile, indent=2), encoding="utf-8")
-        return f"Removed {recipe['name']} from the library and from favorites."
-    return f"Removed {recipe['name']} from the library."
+    if any(e["id"] == recipe_id for e in profile["removed_recipes"]):
+        return f"{recipe['name']} was already removed."
+    profile["removed_recipes"].append({
+        "id": recipe_id, "name": recipe["name"], "source_url": recipe.get("source_url"),
+        "reason": reason, "removed_on": date.today().isoformat(),
+    })
+    was_favorite = recipe_id in profile["favorite_recipe_ids"]
+    profile["favorite_recipe_ids"] = [i for i in profile["favorite_recipe_ids"] if i != recipe_id]
+    _save_profile(profile)
+    return f"Removed {recipe['name']}" + (" (and from favorites)." if was_favorite else ".")
 
 
 @beta_tool
 def list_removed_recipes() -> str:
-    """List recipes the user has removed, with their reasons. Check this to avoid
-    suggesting dishes like ones the user disliked."""
-    removed = _load_removed()
+    """List recipes the active user has removed, with their reasons. Check this to avoid
+    suggesting dishes like ones they disliked."""
+    removed = _load_profile()["removed_recipes"]
     if not removed:
         return "No removed recipes."
-    return json.dumps([{"id": e["recipe"]["id"], "name": e["recipe"]["name"], "reason": e["reason"],
-                        "removed_on": e["removed_on"]} for e in removed], indent=2)
+    return json.dumps([{k: e[k] for k in ("id", "name", "reason", "removed_on")} for e in removed], indent=2)
 
 
 @beta_tool
+@_locked
 def restore_recipe(recipe_id: str) -> str:
-    """Put a previously removed recipe back in the library. Only when the user asks for it.
+    """Bring back a recipe the active user removed. Only when they ask for it.
 
     Args:
         recipe_id: The id from list_removed_recipes.
     """
-    removed = _load_removed()
-    entry = next((e for e in removed if e["recipe"]["id"] == recipe_id), None)
+    profile = _load_profile()
+    entry = next((e for e in profile["removed_recipes"] if e["id"] == recipe_id), None)
     if entry is None:
         raise ValueError(f"No removed recipe with id {recipe_id!r}. Use list_removed_recipes.")
-    recipes = _load_recipes()
-    if not any(r["id"] == recipe_id for r in recipes):
-        recipes.append(entry["recipe"])
-        _save_recipes(recipes)
-    REMOVED_PATH.write_text(json.dumps([e for e in removed if e is not entry], indent=2), encoding="utf-8")
-    return f"Restored {entry['recipe']['name']} to the library."
-
-
-@beta_tool
-def get_recipe(recipe_id: str) -> str:
-    """Get the full recipe (quantities and steps) for one recipe id.
-
-    Args:
-        recipe_id: The recipe id from search_recipes.
-    """
-    for r in _load_recipes():
-        if r["id"] == recipe_id:
-            return json.dumps(r, indent=2)
-    raise ValueError(f"Unknown recipe id {recipe_id!r}")
+    profile["removed_recipes"] = [e for e in profile["removed_recipes"] if e is not entry]
+    _save_profile(profile)
+    return f"Restored {entry['name']}."
 
 
 class Ingredient(TypedDict):
@@ -282,6 +526,7 @@ class Nutrition(TypedDict):
 
 
 @beta_tool
+@_locked
 def add_recipe(
     name: str,
     meal_types: List[str],
@@ -293,8 +538,9 @@ def add_recipe(
     steps: List[str],
     source_url: Optional[str] = None,
 ) -> str:
-    """Save a recipe to the library, usually one the user pasted from Serious Eats. Use the source's
-    ingredient quantities; if it lists no nutrition, give realistic, conservative estimates.
+    """Save a recipe to the shared library, usually one the user pasted from Serious Eats.
+    Use the source's ingredient quantities; if it lists no nutrition, give realistic,
+    conservative estimates.
 
     Args:
         name: Recipe name.
@@ -309,16 +555,22 @@ def add_recipe(
             source's text; the full method stays at source_url).
         source_url: Page the recipe came from, e.g. a https://www.seriouseats.com/... URL.
     """
+    recipe_id = slugify(name)
     recipes = _load_recipes()
-    recipe_id = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
-    if any(r["id"] == recipe_id for r in recipes):
-        raise ValueError(f"A recipe with id {recipe_id!r} already exists")
-    if (prior := _find_removed(recipe_id, source_url)) is not None:
+
+    def same(r: dict) -> bool:
+        return (r["id"] == recipe_id or slugify(r["name"]) == recipe_id
+                or bool(source_url and r.get("source_url") == source_url))
+
+    prior = next((e for e in _load_profile()["removed_recipes"] if same(e)), None)
+    if prior is not None:
         raise ValueError(
-            f"The user removed {prior['recipe']['name']!r} on {prior['removed_on']} "
-            f"(reason: {prior['reason'] or 'not given'}). Don't re-add it; if the user explicitly "
-            f"wants it back, use restore_recipe."
+            f"This user removed {prior['name']!r} on {prior['removed_on']} "
+            f"(reason: {prior['reason'] or 'not given'}). Don't re-add it; if they explicitly "
+            f"want it back, use restore_recipe."
         )
+    if (existing := next((r for r in recipes if same(r)), None)) is not None:
+        raise ValueError(f"Already in the library as {existing['name']!r} (id {existing['id']!r}).")
     recipes.append({
         "id": recipe_id,
         "name": name,
@@ -335,10 +587,15 @@ def add_recipe(
     return f"Added recipe with id {recipe_id!r}."
 
 
+# ---------------------------------------------------------------------------
+# Plans
+# ---------------------------------------------------------------------------
+
 class PlannedMeal(TypedDict):
     meal_type: str
     recipe_id: str
-    portions: int
+    eaters: NotRequired[List[str]]
+    portions: NotRequired[int]
 
 
 class PlanDay(TypedDict):
@@ -350,38 +607,68 @@ def _fmt_qty(q: float) -> str:
     return str(int(q)) if float(q).is_integer() else f"{q:.2f}".rstrip("0")
 
 
+def _fmt_target(value: float, target: Optional[int], unit: str) -> str:
+    if not target:
+        return f"{round(value)}{unit}"
+    pct = round(100 * (value - target) / target)
+    return f"{round(value)}{unit} (target {target}, {pct:+d}%)"
+
+
 @beta_tool
 def save_meal_plan(title: str, days: List[PlanDay], prep_notes: Optional[str] = None) -> str:
-    """Validate and save a meal plan. Computes per-person daily nutrition and a
-    consolidated shopping list (batches are rounded up, so leftovers get reused
-    across days), writes a Markdown file, and returns the totals so you can check
-    them against the user's targets and revise if needed.
+    """Validate and save a meal plan for the active user's household.
+
+    Refuses to save if any member is scheduled to eat one of their allergens. Otherwise
+    computes each member's daily nutrition against their own targets and a consolidated
+    shopping list (batches are rounded up, so leftovers get reused across days), writes a
+    Markdown file, and returns the totals so you can check them and revise if needed.
 
     Args:
         title: Plan title, e.g. "Week of Oct 5".
-        days: One entry per day. Each meal names a recipe_id and portions (people eating it,
-            usually the household size). Repeating a recipe on later days uses leftovers.
+        days: One entry per day. Each meal names a recipe_id and, optionally, eaters: the
+            member names eating it, when it's not the whole household (use this for
+            per-person swaps, e.g. a separate dairy-free dish for one member). portions
+            defaults to the number of eaters (the whole household size when eaters is
+            omitted); set it higher only to cook extra on purpose.
         prep_notes: Optional batch-prep / leftover instructions to include in the file.
     """
     recipes = {r["id"]: r for r in _load_recipes()}
     profile = _load_profile()
-    household = max(1, profile["household_size"])
+    household = _household_size(profile)
+    members = profile["members"]
 
     unknown = {m["recipe_id"] for d in days for m in d["meals"]} - recipes.keys()
     if unknown:
         raise ValueError(f"Unknown recipe ids: {sorted(unknown)}. Use search_recipes or add_recipe first.")
 
-    portions_by_recipe = defaultdict(int)
-    daily = []
+    # Safety first: every named eater must be allergen-free for every meal they eat.
+    problems = []
     for d in days:
-        totals = defaultdict(float)
         for m in d["meals"]:
             r = recipes[m["recipe_id"]]
-            portions_by_recipe[r["id"]] += m["portions"]
-            # Per-person nutrition: each eater gets one serving.
-            for k, v in r["nutrition_per_serving"].items():
-                totals[k] += v
-        daily.append((d["day"], {k: round(v) for k, v in totals.items()}))
+            for member in _resolve_members(profile, m.get("eaters")):
+                if hits := _allergy_conflicts(r, member):
+                    problems.append(f"{d['day']} {m['meal_type']}: {r['name']} contains "
+                                    f"{', '.join(hits)} - {member['name']} is allergic")
+    if problems:
+        raise ValueError("Plan NOT saved - allergy conflicts:\n" + "\n".join(problems) +
+                         "\nSwap these meals, or give the allergic member a separate safe dish "
+                         "and list everyone else as eaters of the original.")
+
+    portions_by_recipe = defaultdict(int)
+    # day -> person -> nutrient totals; "Each person" stands in when no members are saved.
+    nutrition = []
+    for d in days:
+        per_person = defaultdict(lambda: defaultdict(float))
+        for m in d["meals"]:
+            r = recipes[m["recipe_id"]]
+            eaters = _resolve_members(profile, m.get("eaters"))
+            default_portions = len(eaters) if "eaters" in m else household
+            portions_by_recipe[r["id"]] += max(m.get("portions") or default_portions, 1)
+            for person in ([e["name"] for e in eaters] if members else ["Each person"]):
+                for k, v in r["nutrition_per_serving"].items():
+                    per_person[person][k] += v
+        nutrition.append((d["day"], per_person))
 
     batches = {rid: math.ceil(p / recipes[rid]["servings"]) for rid, p in portions_by_recipe.items()}
     staples = [s.lower() for s in profile["pantry_staples"]]
@@ -392,17 +679,23 @@ def save_meal_plan(title: str, days: List[PlanDay], prep_notes: Optional[str] = 
                 continue
             shopping[(ing["section"], ing["item"].lower(), ing["unit"])] += ing["qty"] * n
 
-    lines = [f"# {title}", "", f"Household size: {household}", ""]
-    for d, (day_name, totals) in zip(days, daily):
+    targets = {m["name"]: m for m in members}
+    member_names = ", ".join(m["name"] for m in members)
+    lines = [f"# {title}", "", f"Household size: {household}" + (f" ({member_names})" if members else ""), ""]
+    for d, (day_name, per_person) in zip(days, nutrition):
         lines.append(f"## {day_name}")
         for m in d["meals"]:
             r = recipes[m["recipe_id"]]
             name = f"[{r['name']}]({r['source_url']})" if r.get("source_url") else r["name"]
-            lines.append(f"- **{m['meal_type'].title()}**: {name} ({r['prep_minutes']} min) x{m['portions']}")
-        lines.append(
-            f"- _Per person: {totals.get('calories', 0)} kcal, {totals.get('protein_g', 0)}g protein, "
-            f"{totals.get('carbs_g', 0)}g carbs, {totals.get('fat_g', 0)}g fat_"
-        )
+            who = f" - for {', '.join(m['eaters'])}" if m.get("eaters") else ""
+            lines.append(f"- **{m['meal_type'].title()}**: {name} ({r['prep_minutes']} min){who}")
+        for person, t in per_person.items():
+            target = targets.get(person, DEFAULT_MEMBER)
+            lines.append(
+                f"- _{person}: {_fmt_target(t['calories'], target['daily_calorie_target'], ' kcal')}, "
+                f"{_fmt_target(t['protein_g'], target['daily_protein_target_g'], 'g protein')}, "
+                f"{round(t['carbs_g'])}g carbs, {round(t['fat_g'])}g fat_"
+            )
         lines.append("")
     if prep_notes:
         lines += ["## Prep notes", "", prep_notes, ""]
@@ -420,22 +713,29 @@ def save_meal_plan(title: str, days: List[PlanDay], prep_notes: Optional[str] = 
     if staples:
         lines.append(f"_Pantry staples not listed: {', '.join(profile['pantry_staples'])}_")
 
-    PLANS_DIR.mkdir(exist_ok=True)
-    slug = re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-") or "plan"
-    path = PLANS_DIR / f"{date.today().isoformat()}-{slug}.md"
+    plans_dir = PLANS_DIR / active_user()
+    plans_dir.mkdir(parents=True, exist_ok=True)
+    path = plans_dir / f"{date.today().isoformat()}-{slugify(title) or 'plan'}.md"
     path.write_text("\n".join(lines), encoding="utf-8")
 
     return json.dumps({
         "saved_to": str(path),
-        "targets": {
-            "daily_calorie_target": profile["daily_calorie_target"],
-            "daily_protein_target_g": profile["daily_protein_target_g"],
+        "daily_nutrition_by_person": {
+            day: {
+                person: {
+                    "calories": round(t["calories"]), "protein_g": round(t["protein_g"]),
+                    "calorie_target": targets.get(person, DEFAULT_MEMBER)["daily_calorie_target"],
+                    "protein_target_g": targets.get(person, DEFAULT_MEMBER)["daily_protein_target_g"],
+                }
+                for person, t in per_person.items()
+            }
+            for day, per_person in nutrition
         },
-        "per_person_daily_nutrition": dict(daily),
         "batches_to_cook": batches,
         "shopping_list_item_count": len(shopping),
     }, indent=2)
 
 
-ALL_TOOLS = [get_profile, update_profile, search_recipes, get_recipe, add_recipe, set_favorite,
-             remove_recipe, list_removed_recipes, restore_recipe, save_meal_plan]
+ALL_TOOLS = [get_profile, update_profile, set_member, remove_member, search_recipes, get_recipe,
+             add_recipe, set_favorite, remove_recipe, list_removed_recipes, restore_recipe,
+             save_meal_plan]

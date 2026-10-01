@@ -1,8 +1,8 @@
 # Meal Planner
 
-Kenji is a command-line meal-planning agent built on the Claude API. Tell it what you need
-("plan dinners for next week, family of 4, dairy-free") and it builds a plan from
-your recipe library, then saves it as Markdown with per-person nutrition, a cook
+Kenji is a meal-planning agent built on the Claude API. Tell it what you need
+("plan dinners for next week") and it builds a plan from your recipe library that's
+safe for everyone eating, then saves it as Markdown with per-person nutrition, a cook
 list, and a shopping list grouped by store section.
 
 ## Setup
@@ -11,8 +11,27 @@ Requires [uv](https://docs.astral.sh/uv/) and an Anthropic API key (workspace-sc
 
 ```powershell
 [Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "sk-ant-...", "User")  # then open a new terminal
-uv run main.py
+uv run main.py            # asks which profile (defaults to the last one used)
+uv run main.py jon        # or name it directly
 ```
+
+## Profiles and households
+
+Each **profile** is one user of Kenji, with their own favorites, removed recipes and
+saved plans. The recipe library is shared by everyone.
+
+Each profile has a **household** of members, and every member has their own
+allergies, diet, dislikes and calorie/protein targets. Just tell Kenji, e.g. "add Ava,
+age 6, allergic to peanuts, 1400 calories a day".
+
+- Searches automatically hide recipes containing an allergen of anyone eating the meal.
+  `allergy_exceptions` whitelist safe look-alikes (coconut milk for a dairy allergy).
+- Saving a plan fails if anyone is scheduled to eat one of their allergens. A member can
+  get their own dish for a meal while everyone else shares the main one.
+- Plans report each member's nutrition against their own targets.
+
+Profiles can be linked to Discord user ids (`tools.link_discord`) for a future Discord
+front end. Several Discord users can share one profile.
 
 ## Chat commands
 
@@ -20,24 +39,32 @@ uv run main.py
 | --- | --- |
 | `/paste` | Paste a multi-line recipe (put the source URL on the first line), end with `/end` |
 | `/file <path>` | Send a text file's contents, e.g. a saved recipe |
-| `/favorites` | List favorite recipes |
+| `/favorites` | List this profile's favorite recipes |
+| `/profile` | Show the active profile and its household |
+| `/profile <name>` | Switch profiles (creates new ones); starts a fresh chat |
+| `/profiles` | List all profiles |
 | `/help` | Show commands |
 | `quit` | Exit |
 
 To favorite a recipe, just ask: "favorite the coconut curry". To drop one you don't
-like: "remove the pasta primavera, the kids hated it". Removed recipes move to
-`data/removed_recipes.json`, won't be re-added, and can be restored on request.
+like: "remove the pasta primavera, the kids hated it". Removal is per profile: the
+recipe is hidden for you, won't be re-added, and can be restored on request.
 
 ## How it works
 
-- `main.py`: chat loop using the Anthropic SDK tool runner (`claude-opus-5`).
-- `tools.py`: tools the agent calls: profile read/update, recipe search/get/add,
-  favorites, and `save_meal_plan`, which computes nutrition and the shopping list in
-  code rather than trusting model arithmetic.
-- `data/recipes.json`: recipe library. Serious Eats recipes (by `source_url`) and
-  favorites are ranked first.
-- `data/profile.json`: household size, allergies, targets, pantry staples, favorites.
-- `plans/`: saved plans. Convert one to PDF with `uv run md_to_pdf.py plans/<file>.md`.
+- `agent.py`: the agent loop (Anthropic SDK tool runner, `claude-opus-5`) and system
+  prompt, shared by every front end. Output goes through callbacks.
+- `main.py`: command-line front end.
+- `tools.py`: tools the agent calls: profile and household members, recipe
+  search/get/add, favorites, removal, and `save_meal_plan`, which does allergy checks,
+  nutrition and the shopping list in code rather than trusting model arithmetic. The
+  active profile is context-local, so a multi-user front end can serve several people
+  at once.
+- `data/recipes.json`: shared recipe library. Favorites, then Serious Eats recipes
+  (by `source_url`), are ranked first.
+- `data/profiles/<name>.json`: one file per profile.
+- `plans/<name>/`: that profile's saved plans. Convert one to PDF with
+  `uv run md_to_pdf.py plans/<name>/<file>.md`.
 
 Serious Eats blocks Anthropic's web crawler, so the agent can't browse it: add
 recipes from there with `/paste`.

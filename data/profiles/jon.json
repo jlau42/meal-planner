@@ -1,0 +1,37 @@
+{
+  "household_size": 4,
+  "members": [
+    {
+      "name": "Jon",
+      "allergies": [
+        "dairy",
+        "milk",
+        "butter",
+        "cheese",
+        "cream",
+        "yogurt",
+        "parmesan",
+        "ghee",
+        "whey",
+        "lactose"
+      ],
+      "allergy_exceptions": [
+        "coconut milk",
+        "coconut cream"
+      ],
+      "diet": [
+        "dairy-free"
+      ],
+      "dislikes": [],
+      "daily_calorie_target": null,
+      "daily_protein_target_g": null,
+      "notes": "Dairy allergy - hard exclusion. Check labels on curry pastes, broths and seasoning blends."
+    }
+  ],
+  "max_weeknight_minutes": null,
+  "pantry_staples": [],
+  "notes": "2 adults + 2 kids. Likes chicken-and-veggie dinners; keep kid-friendly (mild spice).",
+  "favorite_recipe_ids": [],
+  "removed_recipes": [],
+  "discord_user_ids": []
+}
