@@ -18,6 +18,7 @@ from anthropic import beta_tool
 ROOT = Path(__file__).parent
 RECIPES_PATH = ROOT / "data" / "recipes.json"
 PROFILE_PATH = ROOT / "data" / "profile.json"
+REMOVED_PATH = ROOT / "data" / "removed_recipes.json"
 PLANS_DIR = ROOT / "plans"
 PREFERRED_SOURCE = "seriouseats.com"
 
@@ -180,6 +181,79 @@ def set_favorite(recipe_id: str, favorite: bool = True) -> str:
     return f"{action} favorites: {names[recipe_id]}. Current favorites: {current}."
 
 
+def _load_removed() -> list:
+    if REMOVED_PATH.exists():
+        return json.loads(REMOVED_PATH.read_text(encoding="utf-8"))
+    return []
+
+
+def _find_removed(recipe_id: str, source_url: Optional[str] = None) -> Optional[dict]:
+    for entry in _load_removed():
+        r = entry["recipe"]
+        if r["id"] == recipe_id or (source_url and r.get("source_url") == source_url):
+            return entry
+    return None
+
+
+@beta_tool
+def remove_recipe(recipe_id: str, reason: Optional[str] = None) -> str:
+    """Remove a recipe the user doesn't like from the library. It also comes off their
+    favorites, and add_recipe will refuse to re-add it. The recipe is kept in
+    data/removed_recipes.json so restore_recipe can bring it back.
+
+    Args:
+        recipe_id: The recipe id from search_recipes.
+        reason: Why the user didn't like it, in their words (e.g. "too spicy for the kids").
+            Use it to steer future suggestions away from similar recipes.
+    """
+    recipes = _load_recipes()
+    recipe = next((r for r in recipes if r["id"] == recipe_id), None)
+    if recipe is None:
+        raise ValueError(f"Unknown recipe id {recipe_id!r}. Use search_recipes to find the id.")
+
+    removed = _load_removed()
+    removed.append({"recipe": recipe, "reason": reason, "removed_on": date.today().isoformat()})
+    REMOVED_PATH.write_text(json.dumps(removed, indent=2), encoding="utf-8")
+    _save_recipes([r for r in recipes if r["id"] != recipe_id])
+
+    profile = _load_profile()
+    if recipe_id in profile["favorite_recipe_ids"]:
+        profile["favorite_recipe_ids"] = [i for i in profile["favorite_recipe_ids"] if i != recipe_id]
+        PROFILE_PATH.write_text(json.dumps(profile, indent=2), encoding="utf-8")
+        return f"Removed {recipe['name']} from the library and from favorites."
+    return f"Removed {recipe['name']} from the library."
+
+
+@beta_tool
+def list_removed_recipes() -> str:
+    """List recipes the user has removed, with their reasons. Check this to avoid
+    suggesting dishes like ones the user disliked."""
+    removed = _load_removed()
+    if not removed:
+        return "No removed recipes."
+    return json.dumps([{"id": e["recipe"]["id"], "name": e["recipe"]["name"], "reason": e["reason"],
+                        "removed_on": e["removed_on"]} for e in removed], indent=2)
+
+
+@beta_tool
+def restore_recipe(recipe_id: str) -> str:
+    """Put a previously removed recipe back in the library. Only when the user asks for it.
+
+    Args:
+        recipe_id: The id from list_removed_recipes.
+    """
+    removed = _load_removed()
+    entry = next((e for e in removed if e["recipe"]["id"] == recipe_id), None)
+    if entry is None:
+        raise ValueError(f"No removed recipe with id {recipe_id!r}. Use list_removed_recipes.")
+    recipes = _load_recipes()
+    if not any(r["id"] == recipe_id for r in recipes):
+        recipes.append(entry["recipe"])
+        _save_recipes(recipes)
+    REMOVED_PATH.write_text(json.dumps([e for e in removed if e is not entry], indent=2), encoding="utf-8")
+    return f"Restored {entry['recipe']['name']} to the library."
+
+
 @beta_tool
 def get_recipe(recipe_id: str) -> str:
     """Get the full recipe (quantities and steps) for one recipe id.
@@ -239,6 +313,12 @@ def add_recipe(
     recipe_id = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
     if any(r["id"] == recipe_id for r in recipes):
         raise ValueError(f"A recipe with id {recipe_id!r} already exists")
+    if (prior := _find_removed(recipe_id, source_url)) is not None:
+        raise ValueError(
+            f"The user removed {prior['recipe']['name']!r} on {prior['removed_on']} "
+            f"(reason: {prior['reason'] or 'not given'}). Don't re-add it; if the user explicitly "
+            f"wants it back, use restore_recipe."
+        )
     recipes.append({
         "id": recipe_id,
         "name": name,
@@ -358,4 +438,4 @@ def save_meal_plan(title: str, days: List[PlanDay], prep_notes: Optional[str] = 
 
 
 ALL_TOOLS = [get_profile, update_profile, search_recipes, get_recipe, add_recipe, set_favorite,
-             save_meal_plan]
+             remove_recipe, list_removed_recipes, restore_recipe, save_meal_plan]
