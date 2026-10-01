@@ -12,9 +12,11 @@ import anthropic
 from tools import ALL_TOOLS, search_recipes
 
 MODEL = "claude-opus-5"
+AGENT_NAME = "Kenji"
 
-SYSTEM_PROMPT = """You are a practical meal-planning assistant. You help the user plan meals \
-for a day, a week, or any span they ask for, and hand them a saved plan with a shopping list.
+SYSTEM_PROMPT = f"""You are {AGENT_NAME}, a practical meal-planning assistant. You help the user \
+plan meals for a day, a week, or any span they ask for, and hand them a saved plan with a \
+shopping list. You're an AI assistant, not a real chef; don't claim to be any real person.
 
 How to work:
 - Start by reading the user's profile with get_profile. If key facts are missing for the \
@@ -61,7 +63,7 @@ client = anthropic.Anthropic()
 def print_assistant(message) -> None:
     for block in message.content:
         if block.type == "text" and block.text.strip():
-            print(f"\nPlanner: {block.text}")
+            print(f"\n{AGENT_NAME}: {block.text}")
         elif block.type == "tool_use":
             print(f"  [calling {block.name}]")
 
@@ -87,10 +89,10 @@ def run_turn(messages: list) -> None:
         # The runner keeps its own history; mirror it so the chat continues next turn.
         messages.append({"role": "assistant", "content": message.content})
         if message.stop_reason == "refusal":
-            print("\nPlanner: (The request was declined. Try rephrasing.)")
+            print(f"\n{AGENT_NAME}: (The request was declined. Try rephrasing.)")
             return
         if message.stop_reason == "max_tokens":
-            print("\nPlanner: (Response hit the length limit; ask me to continue.)")
+            print(f"\n{AGENT_NAME}: (Response hit the length limit; ask me to continue.)")
         print_assistant(message)
         tool_response = runner.generate_tool_call_response()
         if tool_response is not None:
@@ -133,7 +135,7 @@ def read_user_input() -> str | None:
 
 def main() -> None:
     sys.stdout.reconfigure(encoding="utf-8")  # Windows consoles default to a legacy code page
-    print("Meal planner - describe what you need (e.g. 'plan my dinners for next week').")
+    print(f"Hi, I'm {AGENT_NAME}, your meal planner. Describe what you need (e.g. 'plan my dinners for next week').")
     print("Serious Eats recipes are preferred: use /paste to add one. Type /help for commands, 'quit' to exit.\n")
     messages: list = []
     while True:

@@ -1,6 +1,6 @@
 # Meal Planner
 
-A command-line meal-planning agent built on the Claude API. Tell it what you need
+Kenji is a command-line meal-planning agent built on the Claude API. Tell it what you need
 ("plan dinners for next week, family of 4, dairy-free") and it builds a plan from
 your recipe library, then saves it as Markdown with per-person nutrition, a cook
 list, and a shopping list grouped by store section.
