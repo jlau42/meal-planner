@@ -8,6 +8,7 @@ from typing import Callable, Optional
 
 import anthropic
 
+import config  # noqa: F401  loads .env before the API client below reads env vars
 from tools import ALL_TOOLS
 
 MODEL = "claude-opus-5"

@@ -32,6 +32,7 @@ from telegram.constants import ChatAction, ChatType, MessageLimit, ParseMode
 from telegram.error import BadRequest
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 
+import config  # noqa: F401  loads .env before anything reads env vars
 import tools
 from agent import AGENT_NAME, run_turn
 from md_to_pdf import convert as md_to_pdf

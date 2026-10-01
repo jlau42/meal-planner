@@ -9,11 +9,17 @@ list, and a shopping list grouped by store section.
 
 Requires [uv](https://docs.astral.sh/uv/) and an Anthropic API key (workspace-scoped).
 
+Secrets live in a `.env` file in this folder, which is git-ignored. Copy the template
+and fill it in:
+
 ```powershell
-[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "sk-ant-...", "User")  # then open a new terminal
-uv run main.py            # asks which profile (defaults to the last one used)
-uv run main.py jon        # or name it directly
+Copy-Item .env.example .env   # then edit .env: ANTHROPIC_API_KEY=sk-ant-...
+uv run main.py                # asks which profile (defaults to the last one used)
+uv run main.py jon            # or name it directly
 ```
+
+Values already set as real environment variables take precedence over `.env`. Never
+commit `.env`; `.env.example` is the committed template listing every setting.
 
 ## Profiles and households
 
@@ -41,12 +47,10 @@ recipes and plans as the CLI.
    Copy the token it gives you.
 2. Find your own Telegram user id (message **@userinfobot**), so you can claim
    existing profiles such as `jon`.
-3. Set the environment and run it:
+3. Put both in `.env` (`TELEGRAM_BOT_TOKEN=...`, `KENJI_ADMIN_TELEGRAM_IDS=<your id>`)
+   and run it:
 
 ```powershell
-[Environment]::SetEnvironmentVariable("TELEGRAM_BOT_TOKEN", "...", "User")
-[Environment]::SetEnvironmentVariable("KENJI_ADMIN_TELEGRAM_IDS", "<your Telegram user id>", "User")
-# open a new terminal, then:
 uv run telegram_bot.py
 ```
 

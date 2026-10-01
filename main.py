@@ -8,6 +8,7 @@ from pathlib import Path
 
 import anthropic
 
+import config  # noqa: F401  loads .env before anything reads env vars
 import tools
 from agent import AGENT_NAME, run_turn
 
