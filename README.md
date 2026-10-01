@@ -24,7 +24,9 @@ uv run main.py
 | `/help` | Show commands |
 | `quit` | Exit |
 
-To favorite a recipe, just ask: "favorite the coconut curry".
+To favorite a recipe, just ask: "favorite the coconut curry". To drop one you don't
+like: "remove the pasta primavera, the kids hated it". Removed recipes move to
+`data/removed_recipes.json`, won't be re-added, and can be restored on request.
 
 ## How it works
 
