@@ -30,8 +30,49 @@ age 6, allergic to peanuts, 1400 calories a day".
   get their own dish for a meal while everyone else shares the main one.
 - Plans report each member's nutrition against their own targets.
 
-Profiles can be linked to Discord user ids (`tools.link_discord`) for a future Discord
-front end. Several Discord users can share one profile.
+## Telegram bot
+
+Kenji also runs as a Telegram bot (`telegram_bot.py`), sharing the same profiles,
+recipes and plans as the CLI.
+
+**One-time setup**
+
+1. In Telegram, message **@BotFather**, send `/newbot`, and pick a name and username.
+   Copy the token it gives you.
+2. Find your own Telegram user id (message **@userinfobot**), so you can claim
+   existing profiles such as `jon`.
+3. Set the environment and run it:
+
+```powershell
+[Environment]::SetEnvironmentVariable("TELEGRAM_BOT_TOKEN", "...", "User")
+[Environment]::SetEnvironmentVariable("KENJI_ADMIN_TELEGRAM_IDS", "<your Telegram user id>", "User")
+# open a new terminal, then:
+uv run telegram_bot.py
+```
+
+The bot polls Telegram, so it needs no public URL or open ports; keep it running on
+any always-on machine.
+
+**Using it**
+
+| Command | What it does |
+| --- | --- |
+| `/link <profile>` | Link your Telegram account to a profile; a new name creates one |
+| `/link <profile> <code>` | Join a profile someone else uses, with their invite code |
+| `/invite` | Get a one-time code (15 min) for someone to join your profile |
+| `/profile`, `/favorites` | Show your household / favorites |
+| `/newchat` | Start a fresh conversation |
+| `/unlink`, `/help` | Disconnect your account / show help |
+
+Then just chat. Paste recipes directly or send them as `.txt` files; saved plans come
+back as `.md` and `.pdf` documents. In a private chat Kenji answers everything; in a
+group it answers only when @mentioned or replied to. Replies mention household
+allergies, so `/link`, `/invite`, `/profile` and `/favorites` only work in private chat.
+
+Profiles that exist but aren't linked yet (like ones made in the CLI) can only be
+claimed by an id in `KENJI_ADMIN_TELEGRAM_IDS`. Several Telegram accounts can share one
+profile via `/invite`. Chat history is kept in memory per user per chat and resets
+after 6 idle hours or a bot restart; profiles, favorites and plans are saved on disk.
 
 ## Chat commands
 
@@ -54,7 +95,7 @@ recipe is hidden for you, won't be re-added, and can be restored on request.
 
 - `agent.py`: the agent loop (Anthropic SDK tool runner, `claude-opus-5`) and system
   prompt, shared by every front end. Output goes through callbacks.
-- `main.py`: command-line front end.
+- `main.py`: command-line front end. `telegram_bot.py`: Telegram front end.
 - `tools.py`: tools the agent calls: profile and household members, recipe
   search/get/add, favorites, removal, and `save_meal_plan`, which does allergy checks,
   nutrition and the shopping list in code rather than trusting model arithmetic. The

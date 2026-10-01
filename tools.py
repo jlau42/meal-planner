@@ -11,7 +11,7 @@ Data layout:
   plans/<user>/              that user's saved plans
 
 The active user is context-local (a ContextVar), so a multi-user front end such as a
-Discord bot can serve several people at once: set_active_user() in each request's
+Telegram bot can serve several people at once: set_active_user() in each request's
 context, then run the agent there (asyncio.to_thread copies the context along).
 """
 
@@ -43,7 +43,7 @@ DEFAULT_PROFILE = {
     "notes": "",
     "favorite_recipe_ids": [],
     "removed_recipes": [],
-    "discord_user_ids": [],
+    "telegram_user_ids": [],
 }
 
 DEFAULT_MEMBER = {
@@ -115,42 +115,71 @@ def active_user() -> str:
 
 
 def _read_profile_file(user: str) -> dict:
-    return {**DEFAULT_PROFILE, **json.loads(_profile_path(user).read_text(encoding="utf-8"))}
+    profile = {**DEFAULT_PROFILE, **json.loads(_profile_path(user).read_text(encoding="utf-8"))}
+    profile.pop("discord_user_ids", None)  # legacy field from the dropped Discord front end
+    return profile
 
 
-def user_for_discord(discord_user_id: int | str) -> Optional[str]:
-    """The profile linked to a Discord user id, or None if they haven't linked one."""
-    did = str(discord_user_id)
-    return next((u for u in list_users() if did in _read_profile_file(u)["discord_user_ids"]), None)
+def linked_telegram_ids(user: str) -> List[str]:
+    """Telegram user ids linked to a profile."""
+    return list(_read_profile_file(slugify(user))["telegram_user_ids"])
+
+
+def user_for_telegram(telegram_user_id: int | str) -> Optional[str]:
+    """The profile linked to a Telegram user id, or None if they haven't linked one."""
+    tid = str(telegram_user_id)
+    return next((u for u in list_users() if tid in _read_profile_file(u)["telegram_user_ids"]), None)
 
 
 @_locked
-def link_discord(user: str, discord_user_id: int | str) -> None:
-    """Link a Discord user to a profile (moving the link if it pointed elsewhere).
-    Several Discord users may share one profile, e.g. two adults in a household."""
-    did = str(discord_user_id)
+def link_telegram(user: str, telegram_user_id: int | str) -> None:
+    """Link a Telegram user to a profile (moving the link if it pointed elsewhere).
+    Several Telegram users may share one profile, e.g. two adults in a household."""
+    tid = str(telegram_user_id)
     if slugify(user) not in list_users():
         raise ValueError(f"No profile named {user!r}.")
     for u in list_users():
         profile = _read_profile_file(u)
-        ids = [i for i in profile["discord_user_ids"] if i != did]
+        ids = [i for i in profile["telegram_user_ids"] if i != tid]
         if u == slugify(user):
-            ids.append(did)
-        if ids != profile["discord_user_ids"]:
-            profile["discord_user_ids"] = ids
+            ids.append(tid)
+        if ids != profile["telegram_user_ids"]:
+            profile["telegram_user_ids"] = ids
             _profile_path(u).write_text(json.dumps(profile, indent=2), encoding="utf-8")
 
 
 @_locked
-def unlink_discord(discord_user_id: int | str) -> Optional[str]:
-    """Remove a Discord user's link. Returns the profile it was linked to, if any."""
-    did = str(discord_user_id)
-    user = user_for_discord(did)
+def unlink_telegram(telegram_user_id: int | str) -> Optional[str]:
+    """Remove a Telegram user's link. Returns the profile it was linked to, if any."""
+    tid = str(telegram_user_id)
+    user = user_for_telegram(tid)
     if user:
         profile = _read_profile_file(user)
-        profile["discord_user_ids"] = [i for i in profile["discord_user_ids"] if i != did]
+        profile["telegram_user_ids"] = [i for i in profile["telegram_user_ids"] if i != tid]
         _profile_path(user).write_text(json.dumps(profile, indent=2), encoding="utf-8")
     return user
+
+
+def describe_profile() -> str:
+    """Short human-readable summary of the active profile and its household."""
+    profile = _load_profile()
+    lines = [f"Profile: {active_user()} (household of {_household_size(profile)})"]
+    for m in profile["members"]:
+        details = [f"allergies: {', '.join(m['allergies'])}" if m["allergies"] else "",
+                   f"diet: {', '.join(m['diet'])}" if m["diet"] else "",
+                   f"{m['daily_calorie_target']} kcal/day" if m["daily_calorie_target"] else ""]
+        details = [d for d in details if d]
+        lines.append(f"  - {m['name']}" + (f" ({'; '.join(details)})" if details else ""))
+    if not profile["members"]:
+        lines.append("  No household members yet - tell me who's eating.")
+    return "\n".join(lines)
+
+
+def favorite_recipes() -> List[dict]:
+    """The active profile's favorite recipes, in the order they were favorited."""
+    favorites = _load_profile()["favorite_recipe_ids"]
+    by_id = {r["id"]: r for r in _load_recipes()}
+    return [by_id[i] for i in favorites if i in by_id]
 
 
 def _profile_path(user: Optional[str] = None) -> Path:
@@ -260,7 +289,7 @@ def get_profile() -> str:
     limit, pantry staples, notes, favorites and removed recipes.
     Call this at the start of every planning session."""
     profile = _load_profile()
-    profile.pop("discord_user_ids", None)  # account plumbing, not food preferences
+    profile.pop("telegram_user_ids", None)  # account plumbing, not food preferences
     return json.dumps({"user": active_user(), **profile,
                        "household_size": _household_size(profile)}, indent=2)
 

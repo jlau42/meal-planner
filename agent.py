@@ -1,4 +1,4 @@
-"""Kenji's agent loop, shared by every front end (the CLI in main.py, a Discord bot).
+"""Kenji's agent loop, shared by every front end (the CLI in main.py, the Telegram bot).
 
 Callers own the conversation history and the active profile: call
 tools.set_active_user() in the request's context, then run_turn().
