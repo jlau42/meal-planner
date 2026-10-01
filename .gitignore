@@ -4,3 +4,6 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# Personal data: real profiles stay local (see data/sample_profile.json)
+data/profiles/

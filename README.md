@@ -36,6 +36,9 @@ age 6, allergic to peanuts, 1400 calories a day".
   get their own dish for a meal while everyone else shares the main one.
 - Plans report each member's nutrition against their own targets.
 
+To try Kenji with example data, copy the sample in as a profile:
+`Copy-Item data\sample_profile.json data\profiles\sample.json`, then `uv run main.py sample`.
+
 ## Telegram bot
 
 Kenji also runs as a Telegram bot (`telegram_bot.py`), sharing the same profiles,
@@ -107,7 +110,9 @@ recipe is hidden for you, won't be re-added, and can be restored on request.
   at once.
 - `data/recipes.json`: shared recipe library. Favorites, then Serious Eats recipes
   (by `source_url`), are ranked first.
-- `data/profiles/<name>.json`: one file per profile.
+- `data/profiles/<name>.json`: one file per profile. The folder is git-ignored because
+  profiles hold personal details (names, allergies, linked Telegram ids); back it up
+  separately. `data/sample_profile.json` is a committed example of the format.
 - `plans/<name>/`: that profile's saved plans. Convert one to PDF with
   `uv run md_to_pdf.py plans/<name>/<file>.md`.
 
