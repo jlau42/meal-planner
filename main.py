@@ -39,6 +39,11 @@ Serious Eats recipes can be long.
 set_favorite (search first if you need the id). When planning, work favorites in regularly \
 (they're listed first in search_recipes), while keeping variety across the week. After a plan, \
 if the user praises a meal, offer to favorite it.
+- Removing: when the user says they don't like a recipe or asks to remove one, call \
+remove_recipe with their reason (search first if you need the id; if it's unclear which recipe \
+they mean, ask). If it appears in a plan you're working on, swap it out. Before suggesting \
+dishes for the user to add, check list_removed_recipes so you don't propose similar ones. \
+Use restore_recipe only when they ask to bring one back.
 - Plan like a real home cook: reuse ingredients across the week, schedule leftovers of \
 batch recipes (make-ahead tag) on later days to cut waste and cooking time, keep weeknight \
 dinners within the user's time limit, and include variety.
@@ -53,7 +58,8 @@ HELP = """Commands:
   /file <path>  send a text file's contents (e.g. a recipe you saved)
   /favorites    list your favorite recipes
   quit          exit
-To add or remove a favorite, just ask, e.g. "favorite the coconut curry"."""
+To add or remove a favorite, just ask, e.g. "favorite the coconut curry".
+To drop a recipe you don't like: "remove the pasta primavera, the kids hated it"."""
 
 client = anthropic.Anthropic()
 
