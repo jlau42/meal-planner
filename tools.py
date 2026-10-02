@@ -79,7 +79,7 @@ def slugify(text: str) -> str:
 
 
 def list_users() -> List[str]:
-    return sorted(p.stem for p in PROFILES_DIR.glob("*.json"))
+    return sorted(p.stem for p in PROFILES_DIR.glob("*.json") if not p.name.startswith("."))  # skip .invites.json etc.
 
 
 def last_user() -> Optional[str]:

@@ -5,10 +5,13 @@ Run:  uv run telegram_bot.py
 Environment:
   ANTHROPIC_API_KEY         Claude API key (same as the CLI)
   TELEGRAM_BOT_TOKEN        token from @BotFather (required)
-  KENJI_ADMIN_TELEGRAM_IDS  optional: comma-separated Telegram user ids allowed to claim
-                            existing profiles that no one has linked yet (e.g. "jon")
+  KENJI_ADMIN_TELEGRAM_IDS  comma-separated Telegram user ids allowed to create profiles
+                            without an invite and to claim existing profiles that no one
+                            has linked yet (e.g. "jon")
 
-Each Telegram user links to one profile with /link. Kenji answers every message in a
+Kenji is invite-only. Each Telegram user links to one profile with /link: /invite gives a
+code for creating a new profile of one's own, /share a code for joining the inviter's
+household. Codes are kept in data/profiles/.invites.json. Kenji answers every message in a
 private chat; in groups it answers only when @mentioned or replied to. Conversations
 are kept per user per chat, in memory; /newchat starts over. Plans Kenji saves are sent
 as .md and .pdf documents.
@@ -16,11 +19,13 @@ as .md and .pdf documents.
 
 import asyncio
 import html
+import json
 import logging
 import os
 import re
 import secrets
 import sys
+import threading
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -41,7 +46,8 @@ log = logging.getLogger("kenji")
 
 CHUNK_LIMIT = MessageLimit.MAX_TEXT_LENGTH - 500  # headroom for HTML tags added by formatting
 IDLE_RESET_SECONDS = 6 * 3600       # a conversation idle this long starts fresh
-INVITE_TTL_SECONDS = 15 * 60
+NEW_PROFILE_INVITE_TTL_SECONDS = 24 * 3600  # /invite: time to pass the code to a friend
+SHARE_INVITE_TTL_SECONDS = 15 * 60         # /share: grants access to your household's details
 MAX_ATTACHMENT_BYTES = 100_000
 TEXT_SUFFIXES = {".txt", ".md", ".json", ".csv"}
 TYPING_REFRESH_SECONDS = 4          # Telegram's typing indicator lasts ~5 seconds
@@ -120,52 +126,98 @@ class Conversations:
 
 
 class Invites:
-    """One-time codes that let another Telegram user join a profile. In memory only."""
+    """One-time codes, saved to disk so they survive a bot restart.
 
-    def __init__(self, ttl: float = INVITE_TTL_SECONDS):
-        self._codes: Dict[str, Tuple[str, float]] = {}
-        self._ttl = ttl
+    Two kinds:
+      "new"   - /invite: lets someone create a brand-new profile of their own
+      "share" - /share: lets someone join the inviter's existing profile
+    """
 
-    def create(self, profile: str) -> str:
-        code = secrets.token_hex(4)
-        self._codes[code] = (profile, time.monotonic() + self._ttl)
-        return code
+    TTL = {"new": NEW_PROFILE_INVITE_TTL_SECONDS, "share": SHARE_INVITE_TTL_SECONDS}
 
-    def redeem(self, profile: str, code: Optional[str]) -> bool:
+    def __init__(self, path: Optional[Path] = None):
+        self._path = path
+        self._lock = threading.Lock()
+
+    @property
+    def path(self) -> Path:
+        # Resolved lazily so tests can repoint tools.PROFILES_DIR. The folder is git-ignored.
+        return self._path or tools.PROFILES_DIR / ".invites.json"
+
+    def _load(self) -> Dict[str, dict]:
+        try:
+            codes = json.loads(self.path.read_text(encoding="utf-8"))
+        except (FileNotFoundError, json.JSONDecodeError):
+            return {}
+        now = time.time()
+        return {c: e for c, e in codes.items() if e["expires"] > now}
+
+    def _save(self, codes: Dict[str, dict]) -> None:
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = self.path.with_suffix(".tmp")
+        tmp.write_text(json.dumps(codes, indent=2), encoding="utf-8")
+        os.replace(tmp, self.path)
+
+    def create(self, kind: str, created_by: str, profile: Optional[str] = None) -> str:
+        """kind "new" (profile=None) or "share" (profile = the profile to join)."""
+        with self._lock:
+            codes = self._load()
+            code = secrets.token_hex(4)
+            codes[code] = {"kind": kind, "profile": profile, "created_by": created_by,
+                           "expires": time.time() + self.TTL[kind]}
+            self._save(codes)
+            return code
+
+    def redeem(self, code: Optional[str], kind: str, profile: Optional[str] = None) -> bool:
+        """Consume `code` if it's a live code of this kind (and, for "share", this profile)."""
         key = (code or "").strip().lower()
-        entry = self._codes.get(key)
-        if entry is None or entry[0] != profile or entry[1] < time.monotonic():
-            return False
-        del self._codes[key]
-        return True
+        with self._lock:
+            codes = self._load()
+            entry = codes.get(key)
+            if entry is None or entry["kind"] != kind or (kind == "share" and entry["profile"] != profile):
+                return False
+            del codes[key]
+            self._save(codes)
+            return True
 
 
 def link_profile(name: str, telegram_id: int, code: Optional[str], admins: set[int], invites: Invites) -> str:
-    """Link a Telegram user to a profile, enforcing who may join which profile.
+    """Link a Telegram user to a profile, enforcing who may join or create which profile.
 
-    New profile names are created and linked freely. Joining a profile someone has
-    already linked needs an invite code from them; claiming an existing profile no one
-    has linked (e.g. one made in the CLI) is limited to admins. Raises PermissionError."""
+    Kenji is invite-only:
+      - a new profile name needs a /invite code (admins can create profiles freely)
+      - a profile someone already uses needs a /share code from one of its members
+      - an existing profile no one has linked (e.g. made in the CLI) can only be claimed
+        by an admin
+    Codes are only consumed when the link succeeds. Raises PermissionError."""
     profile = tools.slugify(name)
     if not profile:
         raise PermissionError("Profile names need at least one letter or digit.")
+    is_admin = telegram_id in admins
     if profile in tools.list_users():
         linked = tools.linked_telegram_ids(profile)
         if str(telegram_id) in linked:
             return f"You're already linked to {profile}."
-        if linked and not invites.redeem(profile, code):
-            raise PermissionError(f"{profile} belongs to someone else. Ask them to send /invite "
-                                  f"and give you the code, then send: /link {profile} <code>")
-        if not linked and telegram_id not in admins:
+        if linked:
+            if not invites.redeem(code, "share", profile):
+                raise PermissionError(
+                    f"The name {profile} is already taken. To join that household, ask one of its "
+                    f"members to send /share and give you the code. If you have an /invite code for "
+                    f"your own profile, pick a different name: /link <new name> <code>")
+        elif not is_admin:
             raise PermissionError(f"{profile} exists but isn't linked to Telegram yet; only a bot "
-                                  "admin can claim it. Pick a new name to create your own profile.")
+                                  "admin can claim it. Pick a different name for your own profile.")
         created = False
     else:
+        if not is_admin and not invites.redeem(code, "new"):
+            raise PermissionError(
+                "Kenji is invite-only. Ask someone who uses it to send /invite and give you the "
+                f"code, then send: /link {profile} <code>")
         created = True
     tools.set_active_user(profile, remember=False)  # creates the profile file if new
     tools.link_telegram(profile, telegram_id)
-    return (f"Created profile {profile} and linked it to you." if created
-            else f"Linked you to profile {profile}.")
+    return (f"Created your profile {profile}. Tell me who you cook for and any allergies to get started."
+            if created else f"Linked you to profile {profile}.")
 
 
 def snapshot_plans(profile: str) -> Dict[Path, float]:
@@ -186,9 +238,10 @@ def changed_plans(profile: str, before: Dict[Path, float]) -> List[Path]:
 
 HELP = f"""{AGENT_NAME} plans meals for your household. Chat with me here, or @mention me in a group.
 
-/link <profile> - link your Telegram account to a profile (a new name creates one)
-/link <profile> <code> - join someone's profile with their invite code
-/invite - get a one-time code so someone else can join your profile
+/link <name> <code> - create your own profile with an /invite code
+/link <profile> <code> - join someone's household with their /share code
+/invite - get a code so a friend can create their own profile
+/share - get a code so someone can join your household
 /profile - show your household
 /favorites - list your favorite recipes
 /newchat - start a fresh conversation
@@ -197,9 +250,13 @@ HELP = f"""{AGENT_NAME} plans meals for your household. Chat with me here, or @m
 Paste recipes straight into the chat, or send them as .txt files. Saved plans come back as files.
 Your household's allergies and preferences show up in my replies, so private chat is the most private place to plan."""
 
+NOT_LINKED = ("Hi! Kenji is invite-only. Ask someone who uses it to send /invite and give you "
+              "the code, then send /link <name> <code> to create your profile. /help for more.")
+
 COMMANDS = [
     BotCommand("link", "Link your account to a profile"),
-    BotCommand("invite", "Get a code for someone to join your profile"),
+    BotCommand("invite", "Get a code so a friend can create their own profile"),
+    BotCommand("share", "Get a code so someone can join your household"),
     BotCommand("profile", "Show your household"),
     BotCommand("favorites", "List your favorite recipes"),
     BotCommand("newchat", "Start a fresh conversation"),
@@ -240,7 +297,7 @@ class KenjiBot:
     async def _require_profile(self, update: Update) -> Optional[str]:
         profile = tools.user_for_telegram(update.effective_user.id)
         if profile is None:
-            await update.message.reply_text("You're not linked yet: send /link <name> to create a profile.")
+            await update.message.reply_text(NOT_LINKED)
             return None
         tools.set_active_user(profile, remember=False)  # this handler's context only
         return profile
@@ -252,7 +309,8 @@ class KenjiBot:
         if not await self._private_only(update):
             return
         if not context.args:
-            await update.message.reply_text("Send /link <profile name>, or /link <profile> <code> to join one.")
+            await update.message.reply_text("Send /link <name> <invite code> to create your profile, or "
+                                            "/link <profile> <share code> to join a household.")
             return
         code = context.args[1] if len(context.args) > 1 else None
         try:
@@ -271,11 +329,24 @@ class KenjiBot:
     async def invite(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         if not await self._private_only(update) or (profile := await self._require_profile(update)) is None:
             return
-        code = self.invites.create(profile)
+        code = self.invites.create("new", created_by=profile)
         await update.message.reply_text(
-            f"Give this to the person joining {profile} - they send it to me in a private chat:\n\n"
-            f"/link {profile} {code}\n\nIt works once and expires in {INVITE_TTL_SECONDS // 60} minutes. "
-            "They'll see your household's allergies and preferences.")
+            "Send this to the person you're inviting. They open a private chat with me and send it, "
+            "replacing <name> with a name for their profile:\n\n"
+            f"/link <name> {code}\n\n"
+            f"It creates their own separate profile (they won't see your household), works once, and "
+            f"expires in {NEW_PROFILE_INVITE_TTL_SECONDS // 3600} hours. Their messages use your Claude "
+            "API account.")
+
+    async def share(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+        if not await self._private_only(update) or (profile := await self._require_profile(update)) is None:
+            return
+        code = self.invites.create("share", created_by=profile, profile=profile)
+        await update.message.reply_text(
+            f"Give this to the person joining your household ({profile}) - they send it to me in a "
+            f"private chat:\n\n/link {profile} {code}\n\nIt works once and expires in "
+            f"{SHARE_INVITE_TTL_SECONDS // 60} minutes. They'll see and change your household's "
+            "members, allergies, favorites and plans.")
 
     async def profile(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         if not await self._private_only(update) or await self._require_profile(update) is None:
@@ -335,8 +406,7 @@ class KenjiBot:
             return
         profile = tools.user_for_telegram(update.effective_user.id)
         if profile is None:
-            await update.message.reply_text("Hi! First link your Telegram account to a profile: "
-                                            "send /link <name> to create one. /help for more.")
+            await update.message.reply_text(NOT_LINKED)
             return
         await self._run_agent(update, context, profile, text)
 
@@ -417,6 +487,7 @@ def build_application(token: str) -> Application:
     app.add_handler(CommandHandler("link", bot.link))
     app.add_handler(CommandHandler("unlink", bot.unlink))
     app.add_handler(CommandHandler("invite", bot.invite))
+    app.add_handler(CommandHandler("share", bot.share))
     app.add_handler(CommandHandler("profile", bot.profile))
     app.add_handler(CommandHandler("favorites", bot.favorites))
     app.add_handler(CommandHandler("newchat", bot.newchat))
