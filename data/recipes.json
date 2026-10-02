@@ -1178,5 +1178,799 @@
       "Serve the noodles and broth in bowls topped with shredded chicken, scallions, cilantro, fried garlic and shallots, morning glory, with chiles and lime wedges on the side."
     ],
     "source_url": "https://www.seriouseats.com/khao-piak-sen-lao-chicken-noodle-soup"
+  },
+  {
+    "id": "weeknight-ground-beef-tacos",
+    "name": "Weeknight Ground Beef Tacos",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "dairy-free",
+      "gluten-free",
+      "quick",
+      "kid-friendly",
+      "budget"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 430,
+      "protein_g": 24,
+      "carbs_g": 30,
+      "fat_g": 22
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "corn tortillas",
+        "qty": 8.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "chili powder",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cumin",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "lettuce",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "tomato",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "lime",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "salsa",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the beef with diced onion, breaking it up; drain excess fat.",
+      "Stir in chili powder, cumin, a pinch of salt and a splash of water; simmer 5 minutes.",
+      "Warm tortillas in a dry skillet.",
+      "Serve with shredded lettuce, diced tomato, salsa and lime. Keep the spice mild for kids and add hot sauce at the table."
+    ]
+  },
+  {
+    "id": "spaghetti-with-meat-sauce",
+    "name": "Spaghetti with Meat Sauce",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "dairy-free",
+      "make-ahead",
+      "kid-friendly",
+      "budget"
+    ],
+    "prep_minutes": 40,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 26,
+      "carbs_g": 72,
+      "fat_g": 18
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "spaghetti",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "crushed tomatoes",
+        "qty": 28.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "tomato paste",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "italian seasoning",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Soften finely diced onion and grated carrot in olive oil, then add garlic.",
+      "Add the beef and brown it well; stir in tomato paste and cook 2 minutes.",
+      "Add crushed tomatoes and Italian seasoning; simmer 20 minutes.",
+      "Toss with cooked spaghetti. Skip the parmesan for a dairy-free plate. Sauce freezes well."
+    ]
+  },
+  {
+    "id": "korean-style-beef-rice-bowls",
+    "name": "Korean-Style Beef Rice Bowls",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "dairy-free",
+      "quick",
+      "kid-friendly"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 26,
+      "carbs_g": 62,
+      "fat_g": 22
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "brown sugar",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "sesame oil",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "fresh ginger",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "produce"
+      },
+      {
+        "item": "green onions",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cucumber",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Start the rice.",
+      "Brown the beef; add grated garlic and ginger for 1 minute.",
+      "Stir in soy sauce, brown sugar and sesame oil; simmer until glossy, about 3 minutes.",
+      "Serve over rice with sliced green onions and cucumber."
+    ]
+  },
+  {
+    "id": "beef-and-bean-chili",
+    "name": "Beef and Bean Chili",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "dairy-free",
+      "gluten-free",
+      "make-ahead",
+      "high-protein",
+      "high-fiber",
+      "budget"
+    ],
+    "prep_minutes": 60,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 470,
+      "protein_g": 33,
+      "carbs_g": 35,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "kidney beans",
+        "qty": 2.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "crushed tomatoes",
+        "qty": 28.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "chili powder",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cumin",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "beef broth",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the beef in a large pot; add diced onion, pepper and garlic and cook until soft.",
+      "Stir in chili powder and cumin for 1 minute.",
+      "Add tomatoes, drained beans and broth; simmer 40 minutes, stirring now and then.",
+      "Season to taste. Mild as written; add cayenne to individual bowls. Better the next day and freezes well."
+    ]
+  },
+  {
+    "id": "baked-meatballs-in-marinara",
+    "name": "Baked Meatballs in Marinara",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "dairy-free",
+      "make-ahead",
+      "kid-friendly",
+      "high-protein"
+    ],
+    "prep_minutes": 35,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 380,
+      "protein_g": 27,
+      "carbs_g": 15,
+      "fat_g": 22
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "eggs",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "plain breadcrumbs",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 0.5,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 2.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "italian seasoning",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "marinara sauce",
+        "qty": 24.0,
+        "unit": "oz",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 425F. Mix beef, eggs, breadcrumbs, grated onion, garlic, seasoning and salt without overworking.",
+      "Roll into about 24 balls and bake on a lined sheet for 15 minutes.",
+      "Simmer the meatballs in marinara for 10 minutes.",
+      "Serve over pasta or in rolls. Check breadcrumb and marinara labels for milk or cheese."
+    ]
+  },
+  {
+    "id": "smash-burgers",
+    "name": "Smash Burgers",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "dairy-free",
+      "quick",
+      "kid-friendly"
+    ],
+    "prep_minutes": 20,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 450,
+      "protein_g": 26,
+      "carbs_g": 30,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "burger buns",
+        "qty": 6.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "lettuce",
+        "qty": 6.0,
+        "unit": "leaf",
+        "section": "produce"
+      },
+      {
+        "item": "tomato",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 0.5,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "pickles",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "ketchup",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "mustard",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Divide the beef into 6 loose balls; heat a cast-iron pan until very hot.",
+      "Press each ball flat in the pan with a spatula, season, and cook 2 minutes until deeply browned; flip for 30 seconds.",
+      "Toast the buns in the pan.",
+      "Build with lettuce, tomato, onion, pickles and sauces. Skip cheese for a dairy-free burger and check the bun label."
+    ]
+  },
+  {
+    "id": "cottage-pie-with-olive-oil-mash",
+    "name": "Cottage Pie with Olive Oil Mash",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "dairy-free",
+      "make-ahead",
+      "kid-friendly"
+    ],
+    "prep_minutes": 75,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 530,
+      "protein_g": 28,
+      "carbs_g": 40,
+      "fat_g": 28
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "russet potatoes",
+        "qty": 2.5,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "frozen peas",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "tomato paste",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "beef broth",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "worcestershire sauce",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "dried thyme",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Boil peeled potatoes until tender; mash with olive oil, salt and a little cooking water instead of butter and milk.",
+      "Brown the beef with diced onion and carrot; stir in tomato paste, thyme and Worcestershire.",
+      "Add broth and simmer 10 minutes until thick; stir in peas.",
+      "Spread the filling in a baking dish, top with mash, and bake at 400F for 25 minutes until golden. Assemble a day ahead if you like."
+    ]
+  },
+  {
+    "id": "beef-and-rice-stuffed-peppers",
+    "name": "Beef and Rice Stuffed Peppers",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "dairy-free",
+      "gluten-free",
+      "kid-friendly"
+    ],
+    "prep_minutes": 50,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 400,
+      "protein_g": 24,
+      "carbs_g": 30,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "long-grain rice",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "tomato sauce",
+        "qty": 15.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 2.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "italian seasoning",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook the rice. Halve the peppers lengthwise and remove the seeds.",
+      "Brown the beef with onion and garlic; stir in the rice, half the tomato sauce and the seasoning.",
+      "Fill the peppers, set them in a baking dish and spoon the remaining sauce over.",
+      "Cover with foil and bake at 375F for 30 minutes."
+    ]
+  },
+  {
+    "id": "ground-beef-and-broccoli",
+    "name": "Ground Beef and Broccoli",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "dairy-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 490,
+      "protein_g": 28,
+      "carbs_g": 48,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "broccoli",
+        "qty": 1.0,
+        "unit": "head",
+        "section": "produce"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "honey",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cornstarch",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "fresh ginger",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Start the rice. Whisk soy sauce, honey, cornstarch and 1/2 cup water.",
+      "Brown the beef, then add garlic and ginger.",
+      "Add broccoli florets and a splash of water; cover and steam 3 minutes.",
+      "Pour in the sauce and stir until thickened. Serve over rice."
+    ]
+  },
+  {
+    "id": "beef-lettuce-wraps",
+    "name": "Beef Lettuce Wraps",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "dairy-free",
+      "low-carb",
+      "quick"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 330,
+      "protein_g": 23,
+      "carbs_g": 14,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "bibb lettuce",
+        "qty": 1.0,
+        "unit": "head",
+        "section": "produce"
+      },
+      {
+        "item": "water chestnuts",
+        "qty": 8.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "hoisin sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 2.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "fresh ginger",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "produce"
+      },
+      {
+        "item": "green onions",
+        "qty": 3.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Brown the beef; add garlic and ginger for 1 minute.",
+      "Stir in chopped water chestnuts, hoisin and soy sauce; cook 2 minutes.",
+      "Spoon into lettuce cups and top with sliced green onions."
+    ]
   }
 ]
