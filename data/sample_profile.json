@@ -1,0 +1,31 @@
+{
+  "household_size": 3,
+  "members": [
+    {
+      "name": "Alex",
+      "allergies": ["peanut", "peanuts", "peanut butter", "peanut oil"],
+      "allergy_exceptions": [],
+      "diet": [],
+      "dislikes": ["mushroom"],
+      "daily_calorie_target": 2200,
+      "daily_protein_target_g": 130,
+      "notes": "Peanut allergy - hard exclusion."
+    },
+    {
+      "name": "Sam",
+      "allergies": ["dairy", "milk", "butter", "cheese", "cream", "yogurt", "whey", "ghee"],
+      "allergy_exceptions": ["coconut milk", "coconut cream"],
+      "diet": ["vegetarian"],
+      "dislikes": [],
+      "daily_calorie_target": 1800,
+      "daily_protein_target_g": 90,
+      "notes": "Vegetarian; dairy allergy."
+    }
+  ],
+  "max_weeknight_minutes": 40,
+  "pantry_staples": ["olive oil", "kosher salt", "black pepper"],
+  "notes": "2 adults + 1 guest some nights. Likes Thai and Mexican; mild spice.",
+  "favorite_recipe_ids": ["black-bean-tacos"],
+  "removed_recipes": [],
+  "telegram_user_ids": []
+}

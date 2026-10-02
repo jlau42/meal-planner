@@ -3,12 +3,12 @@
 Run:  uv run main.py [profile]
 """
 
-import json
 import sys
 from pathlib import Path
 
 import anthropic
 
+import config  # noqa: F401  loads .env before anything reads env vars
 import tools
 from agent import AGENT_NAME, run_turn
 
@@ -25,23 +25,10 @@ To add or remove a favorite, just ask, e.g. "favorite the coconut curry".
 To drop a recipe you don't like: "remove the pasta primavera, the kids hated it"."""
 
 
-def describe_profile() -> str:
-    profile = json.loads(tools.get_profile.call({}))
-    lines = [f"Profile: {profile['user']} (household of {profile['household_size']})"]
-    for m in profile["members"]:
-        details = [f"allergies: {', '.join(m['allergies'])}" if m["allergies"] else "",
-                   f"diet: {', '.join(m['diet'])}" if m["diet"] else "",
-                   f"{m['daily_calorie_target']} kcal/day" if m["daily_calorie_target"] else ""]
-        lines.append(f"  - {m['name']}" + (f" ({'; '.join(d for d in details if d)})" if any(details) else ""))
-    if not profile["members"]:
-        lines.append("  No household members yet - tell me who's eating.")
-    return "\n".join(lines)
-
-
 def switch_profile(name: str) -> None:
     user, created = tools.set_active_user(name)
     print(("Created new profile " if created else "Switched to profile ") + f"'{user}'.")
-    print(describe_profile() + "\n")
+    print(tools.describe_profile() + "\n")
 
 
 def choose_profile() -> None:
@@ -68,16 +55,15 @@ def read_user_input() -> str | None:
         print("Profiles: " + ", ".join(tools.list_users()) + f" (active: {tools.active_user()})\n")
         return None
     if line == "/profile":
-        print(describe_profile() + "\n")
+        print(tools.describe_profile() + "\n")
         return None
     if line.startswith("/profile "):
         return "/switch " + line[9:].strip()
     if line == "/favorites":
-        result = tools.search_recipes.call({"favorites_only": True})
-        if result.startswith("["):  # JSON list; otherwise it's the "no matches" message
-            for r in json.loads(result):
-                print(f"  * {r['name']} ({r['id']})")
-        else:
+        favorites = tools.favorite_recipes()
+        for r in favorites:
+            print(f"  * {r['name']} ({r['id']})")
+        if not favorites:
             print("  No favorites yet. Ask me to favorite a recipe.")
         print()
         return None

@@ -9,11 +9,17 @@ list, and a shopping list grouped by store section.
 
 Requires [uv](https://docs.astral.sh/uv/) and an Anthropic API key (workspace-scoped).
 
+Secrets live in a `.env` file in this folder, which is git-ignored. Copy the template
+and fill it in:
+
 ```powershell
-[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "sk-ant-...", "User")  # then open a new terminal
-uv run main.py            # asks which profile (defaults to the last one used)
-uv run main.py jon        # or name it directly
+Copy-Item .env.example .env   # then edit .env: ANTHROPIC_API_KEY=sk-ant-...
+uv run main.py                # asks which profile (defaults to the last one used)
+uv run main.py jon            # or name it directly
 ```
+
+Values already set as real environment variables take precedence over `.env`. Never
+commit `.env`; `.env.example` is the committed template listing every setting.
 
 ## Profiles and households
 
@@ -30,8 +36,50 @@ age 6, allergic to peanuts, 1400 calories a day".
   get their own dish for a meal while everyone else shares the main one.
 - Plans report each member's nutrition against their own targets.
 
-Profiles can be linked to Discord user ids (`tools.link_discord`) for a future Discord
-front end. Several Discord users can share one profile.
+To try Kenji with example data, copy the sample in as a profile:
+`Copy-Item data\sample_profile.json data\profiles\sample.json`, then `uv run main.py sample`.
+
+## Telegram bot
+
+Kenji also runs as a Telegram bot (`telegram_bot.py`), sharing the same profiles,
+recipes and plans as the CLI.
+
+**One-time setup**
+
+1. In Telegram, message **@BotFather**, send `/newbot`, and pick a name and username.
+   Copy the token it gives you.
+2. Find your own Telegram user id (message **@userinfobot**), so you can claim
+   existing profiles such as `jon`.
+3. Put both in `.env` (`TELEGRAM_BOT_TOKEN=...`, `KENJI_ADMIN_TELEGRAM_IDS=<your id>`)
+   and run it:
+
+```powershell
+uv run telegram_bot.py
+```
+
+The bot polls Telegram, so it needs no public URL or open ports; keep it running on
+any always-on machine.
+
+**Using it**
+
+| Command | What it does |
+| --- | --- |
+| `/link <profile>` | Link your Telegram account to a profile; a new name creates one |
+| `/link <profile> <code>` | Join a profile someone else uses, with their invite code |
+| `/invite` | Get a one-time code (15 min) for someone to join your profile |
+| `/profile`, `/favorites` | Show your household / favorites |
+| `/newchat` | Start a fresh conversation |
+| `/unlink`, `/help` | Disconnect your account / show help |
+
+Then just chat. Paste recipes directly or send them as `.txt` files; saved plans come
+back as `.md` and `.pdf` documents. In a private chat Kenji answers everything; in a
+group it answers only when @mentioned or replied to. Replies mention household
+allergies, so `/link`, `/invite`, `/profile` and `/favorites` only work in private chat.
+
+Profiles that exist but aren't linked yet (like ones made in the CLI) can only be
+claimed by an id in `KENJI_ADMIN_TELEGRAM_IDS`. Several Telegram accounts can share one
+profile via `/invite`. Chat history is kept in memory per user per chat and resets
+after 6 idle hours or a bot restart; profiles, favorites and plans are saved on disk.
 
 ## Chat commands
 
@@ -54,7 +102,7 @@ recipe is hidden for you, won't be re-added, and can be restored on request.
 
 - `agent.py`: the agent loop (Anthropic SDK tool runner, `claude-opus-5`) and system
   prompt, shared by every front end. Output goes through callbacks.
-- `main.py`: command-line front end.
+- `main.py`: command-line front end. `telegram_bot.py`: Telegram front end.
 - `tools.py`: tools the agent calls: profile and household members, recipe
   search/get/add, favorites, removal, and `save_meal_plan`, which does allergy checks,
   nutrition and the shopping list in code rather than trusting model arithmetic. The
@@ -62,9 +110,12 @@ recipe is hidden for you, won't be re-added, and can be restored on request.
   at once.
 - `data/recipes.json`: shared recipe library. Favorites, then Serious Eats recipes
   (by `source_url`), are ranked first.
-- `data/profiles/<name>.json`: one file per profile.
+- `data/profiles/<name>.json`: one file per profile. The folder is git-ignored because
+  profiles hold personal details (names, allergies, linked Telegram ids); back it up
+  separately. `data/sample_profile.json` is a committed example of the format.
 - `plans/<name>/`: that profile's saved plans. Convert one to PDF with
-  `uv run md_to_pdf.py plans/<name>/<file>.md`.
+  `uv run md_to_pdf.py plans/<name>/<file>.md`. Git-ignored like profiles, since plans
+  name household members; `data/sample_plan.md` is a committed example.
 
 Serious Eats blocks Anthropic's web crawler, so the agent can't browse it: add
 recipes from there with `/paste`.
