@@ -114,7 +114,8 @@ recipe is hidden for you, won't be re-added, and can be restored on request.
   profiles hold personal details (names, allergies, linked Telegram ids); back it up
   separately. `data/sample_profile.json` is a committed example of the format.
 - `plans/<name>/`: that profile's saved plans. Convert one to PDF with
-  `uv run md_to_pdf.py plans/<name>/<file>.md`.
+  `uv run md_to_pdf.py plans/<name>/<file>.md`. Git-ignored like profiles, since plans
+  name household members; `data/sample_plan.md` is a committed example.
 
 Serious Eats blocks Anthropic's web crawler, so the agent can't browse it: add
 recipes from there with `/paste`.
