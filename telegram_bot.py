@@ -5,13 +5,14 @@ Run:  uv run telegram_bot.py
 Environment:
   ANTHROPIC_API_KEY         Claude API key (same as the CLI)
   TELEGRAM_BOT_TOKEN        token from @BotFather (required)
-  KENJI_ADMIN_TELEGRAM_IDS  comma-separated Telegram user ids allowed to create profiles
-                            without an invite and to claim existing profiles that no one
-                            has linked yet (e.g. "jon")
+  KENJI_ADMIN_TELEGRAM_IDS  comma-separated Telegram user ids of admins: the only users who
+                            can issue /invite and /share codes; they can also create
+                            profiles without an invite and claim existing profiles that no
+                            one has linked yet (e.g. "jon")
 
-Kenji is invite-only. Each Telegram user links to one profile with /link: /invite gives a
-code for creating a new profile of one's own, /share a code for joining the inviter's
-household. Codes are kept in data/profiles/.invites.json. Kenji answers every message in a
+Kenji is invite-only. Each Telegram user links to one profile with /link. Admins issue
+the codes: /invite for creating a new profile of one's own, /share for joining the
+admin's household. Codes are kept in data/profiles/.invites.json. Kenji answers every message in a
 private chat; in groups it answers only when @mentioned or replied to. Conversations
 are kept per user per chat, in memory; /newchat starts over. Plans Kenji saves are sent
 as .md and .pdf documents.
@@ -32,9 +33,9 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 import anthropic
-from telegram import BotCommand, Message, Update
+from telegram import BotCommand, BotCommandScopeChat, Message, Update
 from telegram.constants import ChatAction, ChatType, MessageLimit, ParseMode
-from telegram.error import BadRequest
+from telegram.error import BadRequest, TelegramError
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
 
 import config  # noqa: F401  loads .env before anything reads env vars
@@ -201,9 +202,9 @@ def link_profile(name: str, telegram_id: int, code: Optional[str], admins: set[i
         if linked:
             if not invites.redeem(code, "share", profile):
                 raise PermissionError(
-                    f"The name {profile} is already taken. To join that household, ask one of its "
-                    f"members to send /share and give you the code. If you have an /invite code for "
-                    f"your own profile, pick a different name: /link <new name> <code>")
+                    f"The name {profile} is already taken. To join that household, ask a Kenji admin "
+                    f"for a share code for it. If you have an invite code for your own profile, "
+                    f"pick a different name: /link <new name> <code>")
         elif not is_admin:
             raise PermissionError(f"{profile} exists but isn't linked to Telegram yet; only a bot "
                                   "admin can claim it. Pick a different name for your own profile.")
@@ -211,8 +212,8 @@ def link_profile(name: str, telegram_id: int, code: Optional[str], admins: set[i
     else:
         if not is_admin and not invites.redeem(code, "new"):
             raise PermissionError(
-                "Kenji is invite-only. Ask someone who uses it to send /invite and give you the "
-                f"code, then send: /link {profile} <code>")
+                "Kenji is invite-only. Ask a Kenji admin for an invite code, then send: "
+                f"/link {profile} <code>")
         created = True
     tools.set_active_user(profile, remember=False)  # creates the profile file if new
     tools.link_telegram(profile, telegram_id)
@@ -238,10 +239,8 @@ def changed_plans(profile: str, before: Dict[Path, float]) -> List[Path]:
 
 HELP = f"""{AGENT_NAME} plans meals for your household. Chat with me here, or @mention me in a group.
 
-/link <name> <code> - create your own profile with an /invite code
-/link <profile> <code> - join someone's household with their /share code
-/invite - get a code so a friend can create their own profile
-/share - get a code so someone can join your household
+/link <name> <code> - create your own profile with an invite code from an admin
+/link <profile> <code> - join a household with a share code from an admin
 /profile - show your household
 /favorites - list your favorite recipes
 /newchat - start a fresh conversation
@@ -250,19 +249,28 @@ HELP = f"""{AGENT_NAME} plans meals for your household. Chat with me here, or @m
 Paste recipes straight into the chat, or send them as .txt files. Saved plans come back as files.
 Your household's allergies and preferences show up in my replies, so private chat is the most private place to plan."""
 
-NOT_LINKED = ("Hi! Kenji is invite-only. Ask someone who uses it to send /invite and give you "
-              "the code, then send /link <name> <code> to create your profile. /help for more.")
+ADMIN_HELP = HELP + """
 
-COMMANDS = [
+Admin only:
+/invite - get a code so someone can create their own profile
+/share - get a code so someone can join your household"""
+
+NOT_LINKED = ("Hi! Kenji is invite-only. Ask a Kenji admin for an invite code, then send "
+              "/link <name> <code> to create your profile. /help for more.")
+
+USER_COMMANDS = [
     BotCommand("link", "Link your account to a profile"),
-    BotCommand("invite", "Get a code so a friend can create their own profile"),
-    BotCommand("share", "Get a code so someone can join your household"),
     BotCommand("profile", "Show your household"),
     BotCommand("favorites", "List your favorite recipes"),
     BotCommand("newchat", "Start a fresh conversation"),
     BotCommand("unlink", "Disconnect your account"),
     BotCommand("help", "How to use Kenji"),
 ]
+# Admins also see the code-issuing commands, in their own private chat's menu.
+ADMIN_COMMANDS = USER_COMMANDS[:1] + [
+    BotCommand("invite", "Get a code so someone can create their own profile"),
+    BotCommand("share", "Get a code so someone can join your household"),
+] + USER_COMMANDS[1:]
 
 
 class KenjiBot:
@@ -297,13 +305,22 @@ class KenjiBot:
     async def _require_profile(self, update: Update) -> Optional[str]:
         profile = tools.user_for_telegram(update.effective_user.id)
         if profile is None:
-            await update.message.reply_text(NOT_LINKED)
+            await update.message.reply_text(
+                "Link yourself to a profile first: /link <name> (as an admin you don't need a code)."
+                if update.effective_user.id in self.admins else NOT_LINKED)
             return None
         tools.set_active_user(profile, remember=False)  # this handler's context only
         return profile
 
+    async def _require_admin(self, update: Update) -> bool:
+        if update.effective_user.id not in self.admins:
+            await update.message.reply_text("Only a Kenji admin can create invite and share codes. "
+                                            "Ask an admin if someone should get access.")
+            return False
+        return True
+
     async def help(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        await update.message.reply_text(HELP)
+        await update.message.reply_text(ADMIN_HELP if update.effective_user.id in self.admins else HELP)
 
     async def link(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
         if not await self._private_only(update):
@@ -327,9 +344,11 @@ class KenjiBot:
             f"Unlinked from {profile}. The profile itself is kept." if profile else "You weren't linked.")
 
     async def invite(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        if not await self._private_only(update) or (profile := await self._require_profile(update)) is None:
+        if not await self._private_only(update) or not await self._require_admin(update):
             return
-        code = self.invites.create("new", created_by=profile)
+        # Admins needn't be linked to a profile to invite someone.
+        creator = tools.user_for_telegram(update.effective_user.id) or f"telegram:{update.effective_user.id}"
+        code = self.invites.create("new", created_by=creator)
         await update.message.reply_text(
             "Send this to the person you're inviting. They open a private chat with me and send it, "
             "replacing <name> with a name for their profile:\n\n"
@@ -339,7 +358,8 @@ class KenjiBot:
             "API account.")
 
     async def share(self, update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-        if not await self._private_only(update) or (profile := await self._require_profile(update)) is None:
+        if (not await self._private_only(update) or not await self._require_admin(update)
+                or (profile := await self._require_profile(update)) is None):
             return
         code = self.invites.create("share", created_by=profile, profile=profile)
         await update.message.reply_text(
@@ -479,7 +499,12 @@ def build_application(token: str) -> Application:
     bot = KenjiBot()
 
     async def post_init(app: Application) -> None:
-        await app.bot.set_my_commands(COMMANDS)
+        await app.bot.set_my_commands(USER_COMMANDS)
+        for admin_id in bot.admins:
+            try:  # an admin's private chat id is their user id
+                await app.bot.set_my_commands(ADMIN_COMMANDS, scope=BotCommandScopeChat(admin_id))
+            except TelegramError as e:  # e.g. the admin hasn't started a chat with the bot yet
+                log.warning("Couldn't set the admin command menu for %s: %s", admin_id, e)
 
     # concurrent_updates: one person's long planning turn mustn't block everyone else.
     app = Application.builder().token(token).concurrent_updates(True).post_init(post_init).build()
