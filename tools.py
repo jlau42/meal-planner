@@ -234,19 +234,48 @@ def _resolve_members(profile: dict, names: Optional[List[str]]) -> List[dict]:
     return members
 
 
+# A "dairy" allergy also matches these, since cheeses and dairy products are often named
+# without the words milk/cheese/cream (e.g. "feta", "ricotta", "ghee").
+DAIRY_TERMS = (
+    "dairy", "milk", "butter", "cheese", "cream", "yogurt", "ghee", "whey", "casein", "lactose",
+    "kefir", "half-and-half", "parmesan", "pecorino", "mozzarella", "cheddar", "feta", "ricotta",
+    "paneer", "mascarpone", "gruyere", "provolone", "halloumi", "burrata", "queso", "brie",
+    "gouda", "monterey jack", "colby", "swiss", "ranch", "alfredo", "tzatziki", "custard",
+)
+# Non-dairy ingredients whose names contain a dairy term. Ignored only when checking
+# dairy terms, so "cashew butter" still matches a cashew allergy.
+DAIRY_LOOKALIKES = (
+    "peanut butter", "almond butter", "cashew butter", "sunflower butter", "nut butter",
+    "cocoa butter", "apple butter", "butternut", "butter lettuce", "butter beans",
+    "coconut milk", "coconut cream", "cream of coconut", "almond milk", "oat milk", "soy milk",
+    "rice milk", "cashew milk", "cream of tartar", "swiss chard",
+)
+
+
+def is_dairy(item: str) -> bool:
+    """Whether an ingredient name looks like dairy, ignoring known non-dairy look-alikes."""
+    item = item.lower()
+    for lookalike in DAIRY_LOOKALIKES:
+        item = item.replace(lookalike, " ")
+    return any(term in item for term in DAIRY_TERMS)
+
+
 def _allergy_conflicts(recipe: dict, member: dict) -> List[str]:
     """Ingredients in `recipe` that match one of the member's allergens.
 
-    Matching is by case-insensitive substring, so "milk" also catches "buttermilk".
-    allergy_exceptions whitelists specific safe ingredients ("coconut milk")."""
+    Matching is by case-insensitive substring, so "milk" also catches "buttermilk". A
+    "dairy" allergy also matches DAIRY_TERMS; dairy terms ignore DAIRY_LOOKALIKES such as
+    peanut butter. allergy_exceptions whitelists specific safe ingredients ("coconut milk")."""
     allergens = [a.lower() for a in member["allergies"]]
     exceptions = [e.lower() for e in member["allergy_exceptions"]]
+    dairy_allergy = any(a == "dairy" or is_dairy(a) for a in allergens)
+    other_allergens = [a for a in allergens if not is_dairy(a) and a != "dairy"]
     hits = []
     for ing in recipe["ingredients"]:
         item = ing["item"].lower()
         if any(e in item for e in exceptions):
             continue
-        if any(a in item for a in allergens):
+        if (dairy_allergy and is_dairy(item)) or any(a in item for a in other_allergens):
             hits.append(ing["item"])
     return hits
 

@@ -1972,5 +1972,4642 @@
       "Stir in chopped water chestnuts, hoisin and soy sauce; cook 2 minutes.",
       "Spoon into lettuce cups and top with sliced green onions."
     ]
+  },
+  {
+    "id": "chicken-parmesan",
+    "name": "Chicken Parmesan",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "high-protein"
+    ],
+    "prep_minutes": 45,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 620,
+      "protein_g": 48,
+      "carbs_g": 45,
+      "fat_g": 26
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "panko breadcrumbs",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "eggs",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "grated parmesan",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "marinara sauce",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "shredded mozzarella cheese",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "spaghetti",
+        "qty": 8.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Slice the breasts into thin cutlets; dip in beaten egg, then panko mixed with half the parmesan.",
+      "Pan-fry in olive oil until golden, about 3 minutes per side.",
+      "Top with marinara, mozzarella and the rest of the parmesan; bake at 425F for 10 minutes.",
+      "Serve with spaghetti tossed in more sauce."
+    ]
+  },
+  {
+    "id": "chicken-fajitas",
+    "name": "Chicken Fajitas",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "dairy-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 480,
+      "protein_g": 38,
+      "carbs_g": 42,
+      "fat_g": 17
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 3.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "chili powder",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cumin",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "lime",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "flour tortillas",
+        "qty": 8.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "avocado",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Slice chicken, peppers and onion into strips; toss the chicken with spices, lime juice and oil.",
+      "Sear the chicken in a hot skillet until cooked through; set aside.",
+      "Cook the peppers and onion until charred at the edges; return the chicken.",
+      "Serve in warm tortillas with sliced avocado and lime."
+    ]
+  },
+  {
+    "id": "chicken-alfredo",
+    "name": "Chicken Alfredo",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 720,
+      "protein_g": 42,
+      "carbs_g": 62,
+      "fat_g": 33
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "fettuccine",
+        "qty": 12.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "butter",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "heavy cream",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "grated parmesan",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "broccoli florets",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Season and pan-sear the chicken; rest and slice.",
+      "Boil the fettuccine, adding the broccoli for the last 3 minutes.",
+      "Melt butter with garlic, add cream and simmer 3 minutes; whisk in parmesan.",
+      "Toss pasta, broccoli and chicken in the sauce, loosening with pasta water."
+    ]
+  },
+  {
+    "id": "honey-garlic-chicken-thighs",
+    "name": "Honey Garlic Chicken Thighs",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "kid-friendly",
+      "dairy-free",
+      "high-protein"
+    ],
+    "prep_minutes": 35,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 510,
+      "protein_g": 34,
+      "carbs_g": 48,
+      "fat_g": 19
+    },
+    "ingredients": [
+      {
+        "item": "boneless chicken thighs",
+        "qty": 2.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "honey",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "tamari",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 4.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "rice vinegar",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "green beans",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Start the rice. Sear the thighs skin-side down until browned; flip and cook through.",
+      "Pour off most of the fat; add garlic, then honey, tamari and vinegar.",
+      "Simmer, turning the chicken, until the glaze is sticky.",
+      "Serve over rice with steamed green beans."
+    ]
+  },
+  {
+    "id": "chicken-tortilla-soup",
+    "name": "Chicken Tortilla Soup",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "gluten-free",
+      "make-ahead",
+      "dairy-free",
+      "high-protein"
+    ],
+    "prep_minutes": 40,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 380,
+      "protein_g": 30,
+      "carbs_g": 34,
+      "fat_g": 13
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "chicken broth",
+        "qty": 6.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "diced tomatoes",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "black beans",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "frozen corn",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cumin",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "lime",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "corn tortillas",
+        "qty": 6.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "avocado",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Soften the onion; add cumin, broth, tomatoes and whole chicken breasts; simmer 20 minutes.",
+      "Shred the chicken and return it with beans and corn; simmer 5 minutes and add lime juice.",
+      "Bake tortilla strips at 400F until crisp.",
+      "Serve topped with tortilla strips and avocado."
+    ]
+  },
+  {
+    "id": "chicken-teriyaki-rice-bowls",
+    "name": "Chicken Teriyaki Rice Bowls",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "kid-friendly",
+      "dairy-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 540,
+      "protein_g": 36,
+      "carbs_g": 66,
+      "fat_g": 12
+    },
+    "ingredients": [
+      {
+        "item": "boneless chicken thighs",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 0.33,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "brown sugar",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "fresh ginger",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "produce"
+      },
+      {
+        "item": "cornstarch",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "broccoli florets",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Start the rice. Whisk soy sauce, sugar, ginger, cornstarch and 1/3 cup water.",
+      "Cook bite-size chicken in a hot pan until browned.",
+      "Add the sauce and simmer until thick and glossy.",
+      "Serve over rice with steamed broccoli and shredded carrot."
+    ]
+  },
+  {
+    "id": "buffalo-chicken-wraps",
+    "name": "Buffalo Chicken Wraps",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 38,
+      "carbs_g": 36,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "hot sauce",
+        "qty": 0.33,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "butter",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "large flour tortillas",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "romaine lettuce",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "celery",
+        "qty": 2.0,
+        "unit": "stalk",
+        "section": "produce"
+      },
+      {
+        "item": "buttermilk ranch dressing",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook and slice the chicken.",
+      "Melt butter into the hot sauce and toss the chicken in it.",
+      "Fill tortillas with lettuce, chicken, sliced celery and a drizzle of ranch; roll tightly."
+    ]
+  },
+  {
+    "id": "chicken-pot-pie",
+    "name": "Chicken Pot Pie",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "make-ahead",
+      "kid-friendly",
+      "high-protein"
+    ],
+    "prep_minutes": 70,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 30,
+      "carbs_g": 44,
+      "fat_g": 29
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "butter",
+        "qty": 4.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "all-purpose flour",
+        "qty": 0.33,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "chicken broth",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "whole milk",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "frozen mixed vegetables",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "refrigerated pie crust",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "dairy"
+      }
+    ],
+    "steps": [
+      "Poach the chicken in the broth; reserve the broth and dice the chicken.",
+      "Cook onion in butter, stir in flour, then whisk in the broth and milk until thick.",
+      "Add chicken and vegetables; pour into a pie dish and top with the crust, cutting vents.",
+      "Bake at 400F for 30 minutes until golden. Check the crust label; many contain butter."
+    ]
+  },
+  {
+    "id": "greek-chicken-sheet-pan",
+    "name": "Greek Chicken Sheet Pan",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "high-protein"
+    ],
+    "prep_minutes": 40,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 500,
+      "protein_g": 40,
+      "carbs_g": 30,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "baby potatoes",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "red onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cherry tomatoes",
+        "qty": 1.0,
+        "unit": "pint",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "lemon",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "dried oregano",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "crumbled feta cheese",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "kalamata olives",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Toss halved potatoes with oil and roast at 425F for 15 minutes.",
+      "Add chicken chunks, onion wedges and tomatoes tossed in oil, lemon and oregano; roast 20 minutes more.",
+      "Scatter olives and feta over the top before serving."
+    ]
+  },
+  {
+    "id": "chicken-caesar-salad",
+    "name": "Chicken Caesar Salad",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "quick",
+      "high-protein",
+      "low-carb"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 460,
+      "protein_g": 38,
+      "carbs_g": 18,
+      "fat_g": 26
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "romaine lettuce",
+        "qty": 2.0,
+        "unit": "head",
+        "section": "produce"
+      },
+      {
+        "item": "parmesan caesar dressing",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "shaved parmesan",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "croutons",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "bakery"
+      },
+      {
+        "item": "lemon",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Season and grill or pan-sear the chicken; rest and slice.",
+      "Toss chopped romaine with dressing and a squeeze of lemon.",
+      "Top with chicken, croutons and shaved parmesan."
+    ]
+  },
+  {
+    "id": "classic-chicken-noodle-soup",
+    "name": "Classic Chicken Noodle Soup",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "make-ahead",
+      "kid-friendly",
+      "dairy-free"
+    ],
+    "prep_minutes": 45,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 320,
+      "protein_g": 28,
+      "carbs_g": 30,
+      "fat_g": 9
+    },
+    "ingredients": [
+      {
+        "item": "boneless chicken thighs",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "chicken broth",
+        "qty": 8.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "carrot",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "celery",
+        "qty": 2.0,
+        "unit": "stalk",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "egg noodles",
+        "qty": 6.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "dried thyme",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Soften diced onion, carrot and celery in a pot.",
+      "Add broth, thyme and the chicken; simmer 20 minutes, then shred the chicken.",
+      "Add noodles and cook until tender. Season well with salt and pepper."
+    ]
+  },
+  {
+    "id": "chicken-and-snap-pea-stir-fry",
+    "name": "Chicken and Snap Pea Stir-Fry",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "dairy-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 470,
+      "protein_g": 36,
+      "carbs_g": 50,
+      "fat_g": 13
+    },
+    "ingredients": [
+      {
+        "item": "chicken breast",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "snap peas",
+        "qty": 3.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "oyster sauce",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 2.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "sesame oil",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Start the rice. Stir-fry sliced chicken in a very hot pan until browned; remove.",
+      "Stir-fry snap peas and pepper 2 minutes with garlic.",
+      "Return the chicken with soy sauce, oyster sauce and sesame oil; toss and serve over rice."
+    ]
+  },
+  {
+    "id": "chicken-quesadillas",
+    "name": "Chicken Quesadillas",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 540,
+      "protein_g": 38,
+      "carbs_g": 36,
+      "fat_g": 27
+    },
+    "ingredients": [
+      {
+        "item": "cooked chicken breast",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "flour tortillas",
+        "qty": 8.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "shredded monterey jack cheese",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "salsa",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "sour cream",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      }
+    ],
+    "steps": [
+      "Shred the chicken and dice the pepper.",
+      "Fill tortillas with cheese, chicken and pepper; fold.",
+      "Cook in a dry skillet 2-3 minutes per side until the cheese melts.",
+      "Cut into wedges and serve with salsa and sour cream."
+    ]
+  },
+  {
+    "id": "chicken-tikka-masala",
+    "name": "Chicken Tikka Masala",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "make-ahead",
+      "high-protein"
+    ],
+    "prep_minutes": 50,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 590,
+      "protein_g": 40,
+      "carbs_g": 52,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "boneless chicken thighs",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "plain yogurt",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "garam masala",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "fresh ginger",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "produce"
+      },
+      {
+        "item": "crushed tomatoes",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "heavy cream",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "basmati rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Marinate chicken pieces in yogurt and half the garam masala for at least 15 minutes.",
+      "Broil or sear the chicken until charred in spots.",
+      "Soften onion, garlic and ginger; add the rest of the spice and the tomatoes; simmer 10 minutes.",
+      "Stir in cream and the chicken; simmer 5 minutes. Serve over rice. Mild as written."
+    ]
+  },
+  {
+    "id": "lemon-herb-roast-chicken",
+    "name": "Lemon Herb Roast Chicken",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "dairy-free",
+      "high-protein"
+    ],
+    "prep_minutes": 90,
+    "servings": 5,
+    "nutrition_per_serving": {
+      "calories": 480,
+      "protein_g": 42,
+      "carbs_g": 22,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "whole chicken",
+        "qty": 4.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "lemon",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 4.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "dried herbs de provence",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "carrots",
+        "qty": 2.0,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Pat the chicken dry and rub with oil, herbs, salt and lemon zest; stuff with the lemon halves and garlic.",
+      "Set it on chopped carrots and onion in a roasting pan.",
+      "Roast at 425F for about 70 minutes, until the thigh reaches 165F.",
+      "Rest 10 minutes before carving; spoon pan juices over."
+    ]
+  },
+  {
+    "id": "bbq-chicken-drumsticks",
+    "name": "BBQ Chicken Drumsticks",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "kid-friendly",
+      "budget",
+      "dairy-free",
+      "high-protein"
+    ],
+    "prep_minutes": 50,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 36,
+      "carbs_g": 40,
+      "fat_g": 23
+    },
+    "ingredients": [
+      {
+        "item": "chicken drumsticks",
+        "qty": 3.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "bbq sauce",
+        "qty": 0.75,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "smoked paprika",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "sweet potatoes",
+        "qty": 2.0,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Season drumsticks with paprika and salt; roast at 425F for 25 minutes alongside oiled sweet potato wedges.",
+      "Brush the drumsticks with BBQ sauce and roast 15 minutes more, brushing again halfway.",
+      "Check the BBQ sauce label if you need it gluten-free."
+    ]
+  },
+  {
+    "id": "pork-carnitas-tacos",
+    "name": "Pork Carnitas Tacos",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "make-ahead",
+      "dairy-free",
+      "high-protein"
+    ],
+    "prep_minutes": 180,
+    "servings": 8,
+    "nutrition_per_serving": {
+      "calories": 450,
+      "protein_g": 32,
+      "carbs_g": 28,
+      "fat_g": 23
+    },
+    "ingredients": [
+      {
+        "item": "pork shoulder",
+        "qty": 4.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "orange",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "lime",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 4.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "cumin",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "dried oregano",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "corn tortillas",
+        "qty": 16.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "cilantro",
+        "qty": 1.0,
+        "unit": "bunch",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Cut the pork into chunks and season with salt, cumin and oregano.",
+      "Braise covered with orange and lime juice, onion and garlic at 325F for 2.5 hours until tender.",
+      "Shred, then crisp the pork on a sheet pan under the broiler, basting with the juices.",
+      "Serve in warm tortillas with cilantro and onion. Freezes well."
+    ]
+  },
+  {
+    "id": "garlic-butter-pork-chops",
+    "name": "Garlic Butter Pork Chops",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 40,
+      "carbs_g": 30,
+      "fat_g": 26
+    },
+    "ingredients": [
+      {
+        "item": "bone-in pork chops",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "meat"
+      },
+      {
+        "item": "butter",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "garlic",
+        "qty": 4.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "dried thyme",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "baby potatoes",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "asparagus",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Boil or microwave the potatoes until tender. Pat the chops dry and season.",
+      "Sear the chops 4 minutes per side in a hot skillet.",
+      "Add butter, garlic and thyme and baste for 1 minute; rest the chops.",
+      "Saut\u00e9 the asparagus and smashed potatoes in the pan butter."
+    ]
+  },
+  {
+    "id": "slow-cooker-pulled-pork-sandwiches",
+    "name": "Slow Cooker Pulled Pork Sandwiches",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "make-ahead",
+      "kid-friendly",
+      "dairy-free",
+      "high-protein"
+    ],
+    "prep_minutes": 480,
+    "servings": 10,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 32,
+      "carbs_g": 48,
+      "fat_g": 21
+    },
+    "ingredients": [
+      {
+        "item": "pork shoulder",
+        "qty": 4.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "bbq sauce",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "brown sugar",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "smoked paprika",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "burger buns",
+        "qty": 10.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "coleslaw mix",
+        "qty": 3.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "apple cider vinegar",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Rub the pork with sugar, paprika and salt; slow-cook on low with sliced onion and half the sauce for 8 hours.",
+      "Shred and stir in the rest of the sauce.",
+      "Toss the coleslaw mix with vinegar and a pinch of salt.",
+      "Pile onto buns with slaw. Check the bun label for milk."
+    ]
+  },
+  {
+    "id": "ham-fried-rice",
+    "name": "Ham Fried Rice",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "budget",
+      "kid-friendly",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 460,
+      "protein_g": 22,
+      "carbs_g": 60,
+      "fat_g": 14
+    },
+    "ingredients": [
+      {
+        "item": "diced ham",
+        "qty": 8.0,
+        "unit": "oz",
+        "section": "deli"
+      },
+      {
+        "item": "cooked jasmine rice",
+        "qty": 4.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "eggs",
+        "qty": 3.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "frozen peas and carrots",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "green onions",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "vegetable oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Use day-old rice if you have it. Scramble the eggs in oil; set aside.",
+      "Brown the ham, then add peas and carrots.",
+      "Add the rice and stir-fry until hot and slightly crisp; add soy sauce, eggs and green onions."
+    ]
+  },
+  {
+    "id": "sheet-pan-sausage-and-peppers",
+    "name": "Sheet-Pan Sausage and Peppers",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "dairy-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 470,
+      "protein_g": 22,
+      "carbs_g": 20,
+      "fat_g": 33
+    },
+    "ingredients": [
+      {
+        "item": "italian pork sausage",
+        "qty": 1.25,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 3.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "italian seasoning",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "baby potatoes",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Toss sliced peppers, onion and halved potatoes with oil and seasoning.",
+      "Nestle the sausages among the vegetables.",
+      "Roast at 425F for 25 minutes, turning the sausages once. Serve as is or in rolls."
+    ]
+  },
+  {
+    "id": "pork-tenderloin-with-roasted-apples",
+    "name": "Pork Tenderloin with Roasted Apples",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "dairy-free",
+      "high-protein"
+    ],
+    "prep_minutes": 40,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 430,
+      "protein_g": 36,
+      "carbs_g": 32,
+      "fat_g": 16
+    },
+    "ingredients": [
+      {
+        "item": "pork tenderloin",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "apple",
+        "qty": 3.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "red onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "dijon mustard",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "maple syrup",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "dried rosemary",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "brussels sprouts",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Rub the tenderloin with mustard, maple, rosemary and salt; sear on all sides.",
+      "Surround with apple wedges, onion and halved sprouts tossed in oil.",
+      "Roast at 425F for 18-20 minutes to 145F; rest 5 minutes and slice."
+    ]
+  },
+  {
+    "id": "ground-pork-banh-mi-bowls",
+    "name": "Ground Pork Banh Mi Bowls",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 26,
+      "carbs_g": 58,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "ground pork",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "fish sauce",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "brown sugar",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 2.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cucumber",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "rice vinegar",
+        "qty": 0.33,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "cilantro",
+        "qty": 1.0,
+        "unit": "bunch",
+        "section": "produce"
+      },
+      {
+        "item": "mayonnaise",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Start the rice. Quick-pickle julienned carrot and cucumber in vinegar with a pinch of sugar and salt.",
+      "Brown the pork with garlic; add fish sauce and sugar and cook until caramelized.",
+      "Serve over rice with pickles, cilantro and a drizzle of mayo (sriracha optional)."
+    ]
+  },
+  {
+    "id": "pork-ramen-noodle-stir-fry",
+    "name": "Pork Ramen Noodle Stir-Fry",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 490,
+      "protein_g": 24,
+      "carbs_g": 56,
+      "fat_g": 19
+    },
+    "ingredients": [
+      {
+        "item": "ground pork",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "ramen noodles",
+        "qty": 4.0,
+        "unit": "pack",
+        "section": "pantry"
+      },
+      {
+        "item": "bok choy",
+        "qty": 3.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "hoisin sauce",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 2.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "green onions",
+        "qty": 3.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Cook the noodles without the seasoning packets; drain.",
+      "Brown the pork with garlic, then add chopped bok choy until wilted.",
+      "Toss in the noodles with soy sauce, hoisin and green onions."
+    ]
+  },
+  {
+    "id": "pork-schnitzel",
+    "name": "Pork Schnitzel",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "high-protein"
+    ],
+    "prep_minutes": 35,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 38,
+      "carbs_g": 40,
+      "fat_g": 27
+    },
+    "ingredients": [
+      {
+        "item": "boneless pork loin chops",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "all-purpose flour",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "eggs",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "panko breadcrumbs",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "vegetable oil",
+        "qty": 0.33,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "lemon",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "baby potatoes",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "butter",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      }
+    ],
+    "steps": [
+      "Pound the chops thin; dredge in flour, beaten egg, then panko.",
+      "Fry in hot oil 2-3 minutes per side until deep golden; drain.",
+      "Serve with boiled potatoes tossed in butter and lemon wedges."
+    ]
+  },
+  {
+    "id": "pork-and-pineapple-tacos",
+    "name": "Pork and Pineapple Tacos",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "dairy-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 470,
+      "protein_g": 30,
+      "carbs_g": 46,
+      "fat_g": 18
+    },
+    "ingredients": [
+      {
+        "item": "pork tenderloin",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "pineapple chunks",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "chili powder",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cumin",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "lime",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "corn tortillas",
+        "qty": 12.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "red onion",
+        "qty": 0.5,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cilantro",
+        "qty": 1.0,
+        "unit": "bunch",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Slice the pork thin and toss with chili powder, cumin, lime juice and salt.",
+      "Sear in a very hot pan in batches; char the pineapple in the same pan.",
+      "Chop together and serve in tortillas with onion and cilantro."
+    ]
+  },
+  {
+    "id": "ham-and-cheddar-quiche",
+    "name": "Ham and Cheddar Quiche",
+    "meal_types": [
+      "breakfast",
+      "lunch"
+    ],
+    "tags": [
+      "make-ahead"
+    ],
+    "prep_minutes": 60,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 430,
+      "protein_g": 20,
+      "carbs_g": 22,
+      "fat_g": 29
+    },
+    "ingredients": [
+      {
+        "item": "refrigerated pie crust",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "eggs",
+        "qty": 6.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "whole milk",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "diced ham",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "deli"
+      },
+      {
+        "item": "shredded cheddar cheese",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "spinach",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Press the crust into a pie dish and bake at 375F for 10 minutes.",
+      "Whisk eggs and milk with salt and pepper.",
+      "Layer ham, wilted spinach and cheddar in the crust; pour in the eggs.",
+      "Bake 35-40 minutes until just set. Good warm or cold."
+    ]
+  },
+  {
+    "id": "sausage-and-egg-breakfast-burritos",
+    "name": "Sausage and Egg Breakfast Burritos",
+    "meal_types": [
+      "breakfast"
+    ],
+    "tags": [
+      "make-ahead",
+      "kid-friendly",
+      "quick"
+    ],
+    "prep_minutes": 30,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 26,
+      "carbs_g": 36,
+      "fat_g": 30
+    },
+    "ingredients": [
+      {
+        "item": "breakfast pork sausage",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "eggs",
+        "qty": 8.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "large flour tortillas",
+        "qty": 6.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "shredded cheddar cheese",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "frozen hash browns",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "salsa",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the sausage; crisp the hash browns in the same pan.",
+      "Softly scramble the eggs.",
+      "Fill tortillas with sausage, potatoes, eggs, cheese and salsa; roll tightly.",
+      "Wrap in foil to freeze; reheat in the oven or microwave."
+    ]
+  },
+  {
+    "id": "bacon-carbonara",
+    "name": "Bacon Carbonara",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "quick"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 640,
+      "protein_g": 28,
+      "carbs_g": 66,
+      "fat_g": 28
+    },
+    "ingredients": [
+      {
+        "item": "thick-cut bacon",
+        "qty": 8.0,
+        "unit": "oz",
+        "section": "meat"
+      },
+      {
+        "item": "spaghetti",
+        "qty": 12.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "eggs",
+        "qty": 3.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "grated parmesan",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "black pepper",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Crisp chopped bacon in a skillet; keep the fat.",
+      "Whisk eggs with parmesan and lots of black pepper.",
+      "Toss the hot drained pasta with the bacon off the heat, then stir in the egg mixture, adding pasta water until silky."
+    ]
+  },
+  {
+    "id": "pork-chile-verde",
+    "name": "Pork Chile Verde",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "make-ahead",
+      "dairy-free",
+      "high-protein",
+      "low-carb"
+    ],
+    "prep_minutes": 120,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 420,
+      "protein_g": 36,
+      "carbs_g": 18,
+      "fat_g": 22
+    },
+    "ingredients": [
+      {
+        "item": "pork shoulder",
+        "qty": 3.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "tomatillos",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "poblano peppers",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 4.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "chicken broth",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "cumin",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cilantro",
+        "qty": 1.0,
+        "unit": "bunch",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Broil tomatillos, poblanos, onion and garlic until charred; blend with cilantro.",
+      "Brown cubed pork in batches.",
+      "Simmer the pork in the salsa verde and broth with cumin for about 90 minutes until tender.",
+      "Serve with rice or tortillas. Poblanos are mild; taste and adjust."
+    ]
+  },
+  {
+    "id": "honey-mustard-pork-chops",
+    "name": "Honey Mustard Pork Chops",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "kid-friendly",
+      "dairy-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 450,
+      "protein_g": 38,
+      "carbs_g": 32,
+      "fat_g": 18
+    },
+    "ingredients": [
+      {
+        "item": "boneless pork chops",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "meat"
+      },
+      {
+        "item": "dijon mustard",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "honey",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "chicken broth",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "green beans",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "long-grain rice",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Start the rice. Sear the seasoned chops 4 minutes per side; set aside.",
+      "Whisk mustard, honey and broth into the pan and reduce by half.",
+      "Return the chops to coat in the glaze. Serve with steamed green beans and rice."
+    ]
+  },
+  {
+    "id": "sweet-and-sour-pork",
+    "name": "Sweet and Sour Pork",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "dairy-free"
+    ],
+    "prep_minutes": 35,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 28,
+      "carbs_g": 72,
+      "fat_g": 17
+    },
+    "ingredients": [
+      {
+        "item": "pork tenderloin",
+        "qty": 1.25,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "cornstarch",
+        "qty": 0.33,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "pineapple chunks",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "ketchup",
+        "qty": 0.33,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "rice vinegar",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "brown sugar",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "vegetable oil",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Start the rice. Toss bite-size pork in cornstarch and pan-fry until crisp; set aside.",
+      "Stir-fry pepper, onion and pineapple 3 minutes.",
+      "Add ketchup, vinegar, sugar and soy sauce; bubble until thick, then toss the pork back in."
+    ]
+  },
+  {
+    "id": "split-pea-soup-with-ham",
+    "name": "Split Pea Soup with Ham",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "gluten-free",
+      "make-ahead",
+      "budget",
+      "high-fiber",
+      "dairy-free"
+    ],
+    "prep_minutes": 90,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 390,
+      "protein_g": 28,
+      "carbs_g": 54,
+      "fat_g": 7
+    },
+    "ingredients": [
+      {
+        "item": "dried split peas",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "pantry"
+      },
+      {
+        "item": "smoked ham hock",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "meat"
+      },
+      {
+        "item": "diced ham",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "deli"
+      },
+      {
+        "item": "carrot",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "celery",
+        "qty": 2.0,
+        "unit": "stalk",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "chicken broth",
+        "qty": 8.0,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Soften the onion, carrot and celery in a large pot.",
+      "Add rinsed split peas, the ham hock and broth; simmer about 75 minutes until thick.",
+      "Pull the meat off the hock, return it with the diced ham, and season."
+    ]
+  },
+  {
+    "id": "ground-pork-and-cabbage-stir-fry",
+    "name": "Ground Pork and Cabbage Stir-Fry",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "budget",
+      "dairy-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 360,
+      "protein_g": 24,
+      "carbs_g": 14,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "ground pork",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "green cabbage",
+        "qty": 0.5,
+        "unit": "head",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "fresh ginger",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 2.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "sesame oil",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the pork with ginger and garlic.",
+      "Add thinly sliced cabbage and shredded carrot; stir-fry until just tender.",
+      "Season with soy sauce and sesame oil. Serve as is or over rice."
+    ]
+  },
+  {
+    "id": "blt-sandwiches",
+    "name": "BLT Sandwiches",
+    "meal_types": [
+      "lunch"
+    ],
+    "tags": [
+      "kid-friendly",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 480,
+      "protein_g": 18,
+      "carbs_g": 36,
+      "fat_g": 30
+    },
+    "ingredients": [
+      {
+        "item": "thick-cut bacon",
+        "qty": 12.0,
+        "unit": "slice",
+        "section": "meat"
+      },
+      {
+        "item": "sandwich bread",
+        "qty": 8.0,
+        "unit": "slice",
+        "section": "bakery"
+      },
+      {
+        "item": "romaine lettuce",
+        "qty": 4.0,
+        "unit": "leaf",
+        "section": "produce"
+      },
+      {
+        "item": "tomato",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "mayonnaise",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Bake the bacon on a sheet pan at 400F for 15-18 minutes until crisp.",
+      "Toast the bread and spread with mayo.",
+      "Layer bacon, lettuce and sliced tomato. Check the bread label for milk."
+    ]
+  },
+  {
+    "id": "sausage-white-bean-and-kale-soup",
+    "name": "Sausage, White Bean and Kale Soup",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "gluten-free",
+      "make-ahead",
+      "dairy-free"
+    ],
+    "prep_minutes": 40,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 410,
+      "protein_g": 22,
+      "carbs_g": 34,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "italian pork sausage",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "cannellini beans",
+        "qty": 2.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "kale",
+        "qty": 1.0,
+        "unit": "bunch",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "chicken broth",
+        "qty": 6.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "diced tomatoes",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the sausage, removed from its casing, with onion and garlic.",
+      "Add broth, tomatoes and drained beans; simmer 15 minutes.",
+      "Stir in chopped kale until wilted. Season and serve."
+    ]
+  },
+  {
+    "id": "pork-lo-mein",
+    "name": "Pork Lo Mein",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "dairy-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 530,
+      "protein_g": 30,
+      "carbs_g": 60,
+      "fat_g": 18
+    },
+    "ingredients": [
+      {
+        "item": "pork tenderloin",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "lo mein noodles",
+        "qty": 12.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "shredded cabbage",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "mushrooms",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "oyster sauce",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "sesame oil",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook the noodles; drain and toss with sesame oil.",
+      "Stir-fry thinly sliced pork until browned; remove.",
+      "Stir-fry the vegetables, then add noodles, pork, soy and oyster sauce and toss until coated."
+    ]
+  },
+  {
+    "id": "beef-enchiladas",
+    "name": "Beef Enchiladas",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "make-ahead",
+      "kid-friendly",
+      "high-protein"
+    ],
+    "prep_minutes": 50,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 32,
+      "carbs_g": 40,
+      "fat_g": 30
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "black beans",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "red enchilada sauce",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "corn tortillas",
+        "qty": 12.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "shredded cheddar cheese",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "cumin",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the beef with onion and cumin; stir in beans and half a cup of sauce.",
+      "Warm the tortillas, fill and roll them, and set seam-side down in a baking dish.",
+      "Cover with the remaining sauce and the cheese.",
+      "Bake at 375F for 20 minutes until bubbly."
+    ]
+  },
+  {
+    "id": "cheeseburger-macaroni",
+    "name": "Cheeseburger Macaroni",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "budget",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 30,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 32,
+      "carbs_g": 48,
+      "fat_g": 26
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "elbow macaroni",
+        "qty": 12.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "beef broth",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "whole milk",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "tomato paste",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "shredded cheddar cheese",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "mustard powder",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the beef with onion; stir in tomato paste and mustard powder.",
+      "Add broth, milk and the dry macaroni; simmer covered, stirring often, about 12 minutes until the pasta is tender.",
+      "Stir in the cheddar off the heat until melted."
+    ]
+  },
+  {
+    "id": "sloppy-joes",
+    "name": "Sloppy Joes",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "kid-friendly",
+      "budget",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 25,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 420,
+      "protein_g": 24,
+      "carbs_g": 40,
+      "fat_g": 18
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "tomato sauce",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "ketchup",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "worcestershire sauce",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "brown sugar",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "burger buns",
+        "qty": 6.0,
+        "unit": "whole",
+        "section": "bakery"
+      }
+    ],
+    "steps": [
+      "Brown the beef with diced onion and pepper; drain.",
+      "Stir in tomato sauce, ketchup, Worcestershire and brown sugar; simmer 10 minutes until thick.",
+      "Spoon onto toasted buns. Check the bun label for milk."
+    ]
+  },
+  {
+    "id": "classic-meatloaf",
+    "name": "Classic Meatloaf",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "make-ahead",
+      "kid-friendly",
+      "high-protein"
+    ],
+    "prep_minutes": 75,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 450,
+      "protein_g": 30,
+      "carbs_g": 22,
+      "fat_g": 26
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 2.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "eggs",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "plain breadcrumbs",
+        "qty": 0.75,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "whole milk",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "ketchup",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "brown sugar",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "worcestershire sauce",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Soak the breadcrumbs in milk; mix with beef, eggs, grated onion, Worcestershire and salt.",
+      "Shape into a loaf on a lined sheet pan.",
+      "Glaze with ketchup mixed with brown sugar.",
+      "Bake at 375F for about 55 minutes to 160F; rest 10 minutes. Leftovers make great sandwiches."
+    ]
+  },
+  {
+    "id": "beef-lasagna",
+    "name": "Beef Lasagna",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "make-ahead",
+      "kid-friendly",
+      "high-protein"
+    ],
+    "prep_minutes": 90,
+    "servings": 8,
+    "nutrition_per_serving": {
+      "calories": 610,
+      "protein_g": 38,
+      "carbs_g": 42,
+      "fat_g": 32
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "lasagna noodles",
+        "qty": 12.0,
+        "unit": "whole",
+        "section": "pantry"
+      },
+      {
+        "item": "marinara sauce",
+        "qty": 24.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "ricotta cheese",
+        "qty": 15.0,
+        "unit": "oz",
+        "section": "dairy"
+      },
+      {
+        "item": "shredded mozzarella cheese",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "grated parmesan",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "eggs",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Brown the beef with onion; stir in the marinara.",
+      "Mix ricotta with the egg, half the parmesan and a pinch of salt.",
+      "Layer sauce, noodles, ricotta and mozzarella three times, ending with sauce, mozzarella and parmesan.",
+      "Cover and bake at 375F for 45 minutes, uncover for 15. Rest 15 minutes before slicing; freezes well."
+    ]
+  },
+  {
+    "id": "taco-salad",
+    "name": "Taco Salad",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "gluten-free",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 30,
+      "carbs_g": 28,
+      "fat_g": 32
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "chili powder",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cumin",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "romaine lettuce",
+        "qty": 1.0,
+        "unit": "head",
+        "section": "produce"
+      },
+      {
+        "item": "cherry tomatoes",
+        "qty": 1.0,
+        "unit": "pint",
+        "section": "produce"
+      },
+      {
+        "item": "black beans",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "shredded cheddar cheese",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "sour cream",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "tortilla chips",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "salsa",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the beef with chili powder, cumin and a splash of water.",
+      "Toss chopped romaine with tomatoes and beans.",
+      "Top with warm beef, cheddar, crushed chips, salsa and sour cream."
+    ]
+  },
+  {
+    "id": "swedish-meatballs",
+    "name": "Swedish Meatballs",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "high-protein"
+    ],
+    "prep_minutes": 45,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 640,
+      "protein_g": 34,
+      "carbs_g": 50,
+      "fat_g": 33
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "eggs",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "plain breadcrumbs",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 0.5,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "butter",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "all-purpose flour",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "beef broth",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "heavy cream",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "egg noodles",
+        "qty": 12.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "ground allspice",
+        "qty": 0.25,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Mix beef, egg, breadcrumbs, grated onion, allspice and salt; roll into small meatballs and brown them in butter.",
+      "Stir flour into the pan fat, whisk in the broth, and simmer until thick.",
+      "Add the cream and meatballs; simmer 10 minutes.",
+      "Serve over buttered egg noodles."
+    ]
+  },
+  {
+    "id": "beef-and-potato-hash",
+    "name": "Beef and Potato Hash",
+    "meal_types": [
+      "dinner",
+      "breakfast"
+    ],
+    "tags": [
+      "gluten-free",
+      "budget",
+      "kid-friendly",
+      "dairy-free"
+    ],
+    "prep_minutes": 35,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 480,
+      "protein_g": 26,
+      "carbs_g": 34,
+      "fat_g": 27
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "russet potatoes",
+        "qty": 1.5,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "smoked paprika",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "eggs",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "dairy"
+      }
+    ],
+    "steps": [
+      "Cook diced potatoes in oil, covered, until tender, then uncover to crisp.",
+      "Push aside, brown the beef with onion, pepper and paprika, and mix together.",
+      "Make wells and crack in the eggs; cover until set."
+    ]
+  },
+  {
+    "id": "mongolian-ground-beef-noodles",
+    "name": "Mongolian Ground Beef Noodles",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 25,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 560,
+      "protein_g": 28,
+      "carbs_g": 62,
+      "fat_g": 21
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "lo mein noodles",
+        "qty": 10.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 0.33,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "brown sugar",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "fresh ginger",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "produce"
+      },
+      {
+        "item": "green onions",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "broccoli florets",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Cook the noodles, adding the broccoli for the last 2 minutes; drain.",
+      "Brown the beef with garlic and ginger.",
+      "Add soy sauce, sugar and 1/4 cup water; simmer 2 minutes, then toss with noodles, broccoli and green onions."
+    ]
+  },
+  {
+    "id": "ground-beef-stroganoff",
+    "name": "Ground Beef Stroganoff",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "kid-friendly",
+      "quick",
+      "high-protein"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 620,
+      "protein_g": 32,
+      "carbs_g": 52,
+      "fat_g": 31
+    },
+    "ingredients": [
+      {
+        "item": "ground beef",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "meat"
+      },
+      {
+        "item": "mushrooms",
+        "qty": 8.0,
+        "unit": "oz",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "butter",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "all-purpose flour",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "beef broth",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "sour cream",
+        "qty": 0.75,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "egg noodles",
+        "qty": 12.0,
+        "unit": "oz",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Brown the beef, then the sliced mushrooms and onion, in butter.",
+      "Stir in flour, then the broth; simmer until thickened.",
+      "Off the heat, stir in the sour cream. Serve over egg noodles."
+    ]
+  },
+  {
+    "id": "spinach-ricotta-lasagna",
+    "name": "Spinach Ricotta Lasagna",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "make-ahead"
+    ],
+    "prep_minutes": 90,
+    "servings": 8,
+    "nutrition_per_serving": {
+      "calories": 480,
+      "protein_g": 26,
+      "carbs_g": 44,
+      "fat_g": 22
+    },
+    "ingredients": [
+      {
+        "item": "lasagna noodles",
+        "qty": 12.0,
+        "unit": "whole",
+        "section": "pantry"
+      },
+      {
+        "item": "marinara sauce",
+        "qty": 24.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "ricotta cheese",
+        "qty": 15.0,
+        "unit": "oz",
+        "section": "dairy"
+      },
+      {
+        "item": "frozen spinach",
+        "qty": 10.0,
+        "unit": "oz",
+        "section": "frozen"
+      },
+      {
+        "item": "shredded mozzarella cheese",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "grated parmesan",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "eggs",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "dairy"
+      }
+    ],
+    "steps": [
+      "Thaw and squeeze the spinach dry; mix with ricotta, egg and half the parmesan.",
+      "Layer sauce, noodles, spinach-ricotta and mozzarella three times, finishing with sauce and cheese.",
+      "Cover and bake at 375F for 45 minutes, uncover for 15; rest before slicing."
+    ]
+  },
+  {
+    "id": "chickpea-and-spinach-curry",
+    "name": "Chickpea and Spinach Curry",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "make-ahead",
+      "budget",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 420,
+      "protein_g": 14,
+      "carbs_g": 52,
+      "fat_g": 18
+    },
+    "ingredients": [
+      {
+        "item": "chickpeas",
+        "qty": 2.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "coconut milk",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "diced tomatoes",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "curry powder",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "spinach",
+        "qty": 4.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "basmati rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Start the rice. Soften onion and garlic; toast the curry powder for 1 minute.",
+      "Add tomatoes, coconut milk and drained chickpeas; simmer 15 minutes.",
+      "Stir in the spinach until wilted. Serve over rice."
+    ]
+  },
+  {
+    "id": "black-bean-burgers",
+    "name": "Black Bean Burgers",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "vegetarian",
+      "kid-friendly",
+      "dairy-free"
+    ],
+    "prep_minutes": 35,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 430,
+      "protein_g": 17,
+      "carbs_g": 64,
+      "fat_g": 12
+    },
+    "ingredients": [
+      {
+        "item": "black beans",
+        "qty": 2.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "plain breadcrumbs",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "eggs",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "frozen corn",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "cumin",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "smoked paprika",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "burger buns",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "avocado",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "lettuce",
+        "qty": 4.0,
+        "unit": "leaf",
+        "section": "produce"
+      }
+    ],
+    "steps": [
+      "Pat the beans dry and roast them at 375F for 10 minutes so they firm up.",
+      "Mash with breadcrumbs, egg, corn and spices; shape into 4 patties.",
+      "Pan-fry 4 minutes per side until crusty. Serve on buns with avocado and lettuce."
+    ]
+  },
+  {
+    "id": "vegetable-fried-rice",
+    "name": "Vegetable Fried Rice",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "vegetarian",
+      "budget",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 390,
+      "protein_g": 13,
+      "carbs_g": 60,
+      "fat_g": 11
+    },
+    "ingredients": [
+      {
+        "item": "cooked jasmine rice",
+        "qty": 4.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "eggs",
+        "qty": 3.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "frozen peas and carrots",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "edamame",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "green onions",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "vegetable oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Scramble the eggs in oil; set aside.",
+      "Stir-fry the vegetables and edamame 3 minutes.",
+      "Add the rice and fry until hot; finish with soy sauce, eggs and green onions."
+    ]
+  },
+  {
+    "id": "margherita-flatbread-pizzas",
+    "name": "Margherita Flatbread Pizzas",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "vegetarian",
+      "kid-friendly",
+      "quick"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 480,
+      "protein_g": 22,
+      "carbs_g": 50,
+      "fat_g": 21
+    },
+    "ingredients": [
+      {
+        "item": "naan flatbreads",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "pizza sauce",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "fresh mozzarella cheese",
+        "qty": 8.0,
+        "unit": "oz",
+        "section": "dairy"
+      },
+      {
+        "item": "tomato",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "basil",
+        "qty": 1.0,
+        "unit": "bunch",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Heat the oven to 450F.",
+      "Spread sauce on the flatbreads; top with sliced mozzarella and tomato.",
+      "Bake 8-10 minutes until bubbling; finish with basil and a drizzle of oil."
+    ]
+  },
+  {
+    "id": "mushroom-risotto",
+    "name": "Mushroom Risotto",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "gluten-free"
+    ],
+    "prep_minutes": 45,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 15,
+      "carbs_g": 70,
+      "fat_g": 19
+    },
+    "ingredients": [
+      {
+        "item": "arborio rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "mushrooms",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "vegetable broth",
+        "qty": 6.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "dry white wine",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "butter",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "grated parmesan",
+        "qty": 0.75,
+        "unit": "cup",
+        "section": "dairy"
+      }
+    ],
+    "steps": [
+      "Brown sliced mushrooms in half the butter; set aside.",
+      "Soften the onion, toast the rice 1 minute, then add the wine.",
+      "Add hot broth a ladle at a time, stirring, until creamy and just tender, about 20 minutes.",
+      "Stir in the mushrooms, remaining butter and parmesan."
+    ]
+  },
+  {
+    "id": "veggie-quesadillas",
+    "name": "Veggie Quesadillas",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "kid-friendly",
+      "quick"
+    ],
+    "prep_minutes": 20,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 470,
+      "protein_g": 20,
+      "carbs_g": 44,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "flour tortillas",
+        "qty": 8.0,
+        "unit": "whole",
+        "section": "bakery"
+      },
+      {
+        "item": "shredded monterey jack cheese",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "black beans",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "frozen corn",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "frozen"
+      },
+      {
+        "item": "salsa",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Saut\u00e9 the diced pepper and corn until tender.",
+      "Fill tortillas with cheese, beans and vegetables; fold.",
+      "Cook in a dry skillet until crisp and melted. Serve with salsa."
+    ]
+  },
+  {
+    "id": "eggplant-parmesan",
+    "name": "Eggplant Parmesan",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "make-ahead"
+    ],
+    "prep_minutes": 70,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 440,
+      "protein_g": 20,
+      "carbs_g": 40,
+      "fat_g": 23
+    },
+    "ingredients": [
+      {
+        "item": "eggplant",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "eggs",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "panko breadcrumbs",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "marinara sauce",
+        "qty": 24.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "shredded mozzarella cheese",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "grated parmesan",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "olive oil",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Slice the eggplant into rounds; dip in egg, then panko, and bake on oiled sheets at 425F until golden, flipping once.",
+      "Layer eggplant, sauce, mozzarella and parmesan in a baking dish.",
+      "Bake at 375F for 25 minutes until bubbling."
+    ]
+  },
+  {
+    "id": "lentil-bolognese",
+    "name": "Lentil Bolognese",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "make-ahead",
+      "budget",
+      "high-fiber",
+      "dairy-free"
+    ],
+    "prep_minutes": 45,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 430,
+      "protein_g": 20,
+      "carbs_g": 74,
+      "fat_g": 6
+    },
+    "ingredients": [
+      {
+        "item": "brown lentils",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "spaghetti",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "carrot",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "celery",
+        "qty": 2.0,
+        "unit": "stalk",
+        "section": "produce"
+      },
+      {
+        "item": "crushed tomatoes",
+        "qty": 28.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "tomato paste",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "vegetable broth",
+        "qty": 3.0,
+        "unit": "cup",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Soften finely diced onion, carrot and celery in oil; add tomato paste.",
+      "Add lentils, tomatoes and broth; simmer 30 minutes until the lentils are tender and the sauce thick.",
+      "Toss with spaghetti."
+    ]
+  },
+  {
+    "id": "shakshuka",
+    "name": "Shakshuka",
+    "meal_types": [
+      "breakfast",
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "gluten-free",
+      "quick",
+      "low-carb"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 300,
+      "protein_g": 16,
+      "carbs_g": 18,
+      "fat_g": 18
+    },
+    "ingredients": [
+      {
+        "item": "eggs",
+        "qty": 6.0,
+        "unit": "whole",
+        "section": "dairy"
+      },
+      {
+        "item": "crushed tomatoes",
+        "qty": 28.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "garlic",
+        "qty": 3.0,
+        "unit": "clove",
+        "section": "produce"
+      },
+      {
+        "item": "cumin",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "sweet paprika",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "crumbled feta cheese",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      }
+    ],
+    "steps": [
+      "Soften onion, pepper and garlic; add the spices, then the tomatoes, and simmer 10 minutes.",
+      "Make wells and crack in the eggs; cover and cook until the whites set.",
+      "Top with feta. Serve with bread for dipping."
+    ]
+  },
+  {
+    "id": "tofu-and-vegetable-stir-fry",
+    "name": "Tofu and Vegetable Stir-Fry",
+    "meal_types": [
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "dairy-free",
+      "quick"
+    ],
+    "prep_minutes": 30,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 420,
+      "protein_g": 20,
+      "carbs_g": 52,
+      "fat_g": 15
+    },
+    "ingredients": [
+      {
+        "item": "extra-firm tofu",
+        "qty": 14.0,
+        "unit": "oz",
+        "section": "produce"
+      },
+      {
+        "item": "broccoli florets",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "snap peas",
+        "qty": 1.0,
+        "unit": "cup",
+        "section": "produce"
+      },
+      {
+        "item": "soy sauce",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "maple syrup",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cornstarch",
+        "qty": 1.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "jasmine rice",
+        "qty": 1.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "vegetable oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Start the rice. Press the tofu, cube it, toss in cornstarch, and fry until golden.",
+      "Stir-fry the vegetables 3 minutes.",
+      "Add soy sauce, maple and the tofu; toss until glazed. Serve over rice."
+    ]
+  },
+  {
+    "id": "caprese-pasta-salad",
+    "name": "Caprese Pasta Salad",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "make-ahead",
+      "quick"
+    ],
+    "prep_minutes": 25,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 450,
+      "protein_g": 16,
+      "carbs_g": 48,
+      "fat_g": 21
+    },
+    "ingredients": [
+      {
+        "item": "rotini",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "pantry"
+      },
+      {
+        "item": "fresh mozzarella cheese",
+        "qty": 8.0,
+        "unit": "oz",
+        "section": "dairy"
+      },
+      {
+        "item": "cherry tomatoes",
+        "qty": 1.0,
+        "unit": "pint",
+        "section": "produce"
+      },
+      {
+        "item": "basil",
+        "qty": 1.0,
+        "unit": "bunch",
+        "section": "produce"
+      },
+      {
+        "item": "olive oil",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "balsamic vinegar",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Cook the pasta; rinse under cold water.",
+      "Toss with halved tomatoes, mozzarella pieces and torn basil.",
+      "Dress with oil, balsamic, salt and pepper. Keeps 2 days in the fridge."
+    ]
+  },
+  {
+    "id": "roasted-butternut-squash-soup",
+    "name": "Roasted Butternut Squash Soup",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "make-ahead",
+      "dairy-free"
+    ],
+    "prep_minutes": 50,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 260,
+      "protein_g": 4,
+      "carbs_g": 34,
+      "fat_g": 13
+    },
+    "ingredients": [
+      {
+        "item": "butternut squash",
+        "qty": 3.0,
+        "unit": "lb",
+        "section": "produce"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "apple",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "vegetable broth",
+        "qty": 4.0,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "coconut milk",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "ground nutmeg",
+        "qty": 0.5,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Roast cubed squash, onion and apple with oil at 425F for 30 minutes.",
+      "Simmer with broth and nutmeg for 10 minutes.",
+      "Blend until smooth and stir in the coconut milk. Freezes well."
+    ]
+  },
+  {
+    "id": "stovetop-mac-and-cheese",
+    "name": "Stovetop Mac and Cheese",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "vegetarian",
+      "kid-friendly",
+      "quick"
+    ],
+    "prep_minutes": 25,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 520,
+      "protein_g": 22,
+      "carbs_g": 54,
+      "fat_g": 24
+    },
+    "ingredients": [
+      {
+        "item": "elbow macaroni",
+        "qty": 1.0,
+        "unit": "lb",
+        "section": "pantry"
+      },
+      {
+        "item": "butter",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "dairy"
+      },
+      {
+        "item": "all-purpose flour",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "whole milk",
+        "qty": 2.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "shredded cheddar cheese",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "mustard powder",
+        "qty": 1.0,
+        "unit": "tsp",
+        "section": "pantry"
+      },
+      {
+        "item": "frozen peas",
+        "qty": 2.0,
+        "unit": "cup",
+        "section": "frozen"
+      }
+    ],
+    "steps": [
+      "Cook the macaroni, adding the peas for the last 2 minutes.",
+      "Melt butter, whisk in flour and mustard powder, then the milk; simmer until thick.",
+      "Stir in the cheddar until smooth and fold in the pasta and peas."
+    ]
+  },
+  {
+    "id": "chickpea-greek-salad-pitas",
+    "name": "Chickpea Greek Salad Pitas",
+    "meal_types": [
+      "lunch",
+      "dinner"
+    ],
+    "tags": [
+      "vegetarian",
+      "quick"
+    ],
+    "prep_minutes": 15,
+    "servings": 4,
+    "nutrition_per_serving": {
+      "calories": 450,
+      "protein_g": 16,
+      "carbs_g": 52,
+      "fat_g": 20
+    },
+    "ingredients": [
+      {
+        "item": "chickpeas",
+        "qty": 2.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "cucumber",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "cherry tomatoes",
+        "qty": 1.0,
+        "unit": "pint",
+        "section": "produce"
+      },
+      {
+        "item": "red onion",
+        "qty": 0.5,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "crumbled feta cheese",
+        "qty": 0.5,
+        "unit": "cup",
+        "section": "dairy"
+      },
+      {
+        "item": "kalamata olives",
+        "qty": 0.25,
+        "unit": "cup",
+        "section": "pantry"
+      },
+      {
+        "item": "olive oil",
+        "qty": 3.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "lemon",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "pita bread",
+        "qty": 4.0,
+        "unit": "whole",
+        "section": "bakery"
+      }
+    ],
+    "steps": [
+      "Toss chickpeas, diced cucumber, tomatoes, onion, olives and feta.",
+      "Dress with olive oil, lemon juice, oregano, salt and pepper.",
+      "Stuff into warm pitas."
+    ]
+  },
+  {
+    "id": "three-bean-vegetarian-chili",
+    "name": "Three-Bean Vegetarian Chili",
+    "meal_types": [
+      "dinner",
+      "lunch"
+    ],
+    "tags": [
+      "vegetarian",
+      "vegan",
+      "gluten-free",
+      "make-ahead",
+      "budget",
+      "high-fiber",
+      "dairy-free"
+    ],
+    "prep_minutes": 50,
+    "servings": 6,
+    "nutrition_per_serving": {
+      "calories": 380,
+      "protein_g": 18,
+      "carbs_g": 64,
+      "fat_g": 7
+    },
+    "ingredients": [
+      {
+        "item": "kidney beans",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "black beans",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "pinto beans",
+        "qty": 1.0,
+        "unit": "can",
+        "section": "pantry"
+      },
+      {
+        "item": "crushed tomatoes",
+        "qty": 28.0,
+        "unit": "oz",
+        "section": "pantry"
+      },
+      {
+        "item": "onion",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "bell pepper",
+        "qty": 2.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "sweet potato",
+        "qty": 1.0,
+        "unit": "whole",
+        "section": "produce"
+      },
+      {
+        "item": "chili powder",
+        "qty": 2.0,
+        "unit": "tbsp",
+        "section": "pantry"
+      },
+      {
+        "item": "cumin",
+        "qty": 2.0,
+        "unit": "tsp",
+        "section": "pantry"
+      }
+    ],
+    "steps": [
+      "Soften onion and peppers; add diced sweet potato and the spices.",
+      "Add tomatoes, drained beans and 1 cup water; simmer 35 minutes until the sweet potato is tender.",
+      "Season to taste. Mild as written; better the next day."
+    ]
   }
 ]
