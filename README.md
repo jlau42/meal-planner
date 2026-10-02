@@ -48,8 +48,8 @@ recipes and plans as the CLI.
 
 1. In Telegram, message **@BotFather**, send `/newbot`, and pick a name and username.
    Copy the token it gives you.
-2. Find your own Telegram user id (message **@userinfobot**), so you can claim
-   existing profiles such as `jon`.
+2. Find your own Telegram user id (message **@userinfobot**). Admins can create profiles
+   without an invite and claim existing ones such as `jon`.
 3. Put both in `.env` (`TELEGRAM_BOT_TOKEN=...`, `KENJI_ADMIN_TELEGRAM_IDS=<your id>`)
    and run it:
 
@@ -64,21 +64,26 @@ any always-on machine.
 
 | Command | What it does |
 | --- | --- |
-| `/link <profile>` | Link your Telegram account to a profile; a new name creates one |
-| `/link <profile> <code>` | Join a profile someone else uses, with their invite code |
-| `/invite` | Get a one-time code (15 min) for someone to join your profile |
+| `/invite` | Get a code (24 h) so a friend can create **their own** profile |
+| `/share` | Get a code (15 min) so someone can join **your** household |
+| `/link <name> <invite code>` | Create your own profile |
+| `/link <profile> <share code>` | Join an existing household |
 | `/profile`, `/favorites` | Show your household / favorites |
 | `/newchat` | Start a fresh conversation |
 | `/unlink`, `/help` | Disconnect your account / show help |
 
+Kenji is **invite-only**: a new profile needs an `/invite` code (or an admin), so people
+who find the bot can't use it, or your API key, uninvited. Each code works once; unused
+codes survive bot restarts (`data/profiles/.invites.json`).
+
 Then just chat. Paste recipes directly or send them as `.txt` files; saved plans come
 back as `.md` and `.pdf` documents. In a private chat Kenji answers everything; in a
 group it answers only when @mentioned or replied to. Replies mention household
-allergies, so `/link`, `/invite`, `/profile` and `/favorites` only work in private chat.
+allergies, so `/link`, `/invite`, `/share`, `/profile` and `/favorites` only work in
+private chat.
 
 Profiles that exist but aren't linked yet (like ones made in the CLI) can only be
-claimed by an id in `KENJI_ADMIN_TELEGRAM_IDS`. Several Telegram accounts can share one
-profile via `/invite`. Chat history is kept in memory per user per chat and resets
+claimed by an id in `KENJI_ADMIN_TELEGRAM_IDS`. Chat history is kept in memory per user per chat and resets
 after 6 idle hours or a bot restart; profiles, favorites and plans are saved on disk.
 
 ## Chat commands
